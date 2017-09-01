@@ -9,7 +9,7 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<name>mimesis-automation</name>
-	<description>Automation Framework</description>
+	<description>AutomationFramework</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,7 +38,6 @@
 			<artifactId>selenium-java</artifactId>
 			<version>2.45.0</version>
 		</dependency>
-
 
 		<!-- Allure -->
 		<!--<dependency>-->
@@ -87,7 +86,7 @@
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
-			<version>2.0</version>
+			<version>3.0</version>
 		</dependency>
 
 		<!-- http client -->
@@ -183,7 +182,6 @@
 			<artifactId>joda-time</artifactId>
 			<version>2.2</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>

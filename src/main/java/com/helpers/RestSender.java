@@ -1,6 +1,7 @@
 package com.helpers;
 
 import com.configuration.reporting.TestLogger;
+import com.google.inject.Inject;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -31,12 +32,12 @@ public class RestSender {
     private String fullUrl;
     private String jSon = "";
 
+    @Inject
     PropertiesLoader loader;
 
     protected SetRequestHeaders setHeaders = new SetRequestHeaders();
 
     public RestSender(String urlName) {
-        this.loader = new PropertiesLoader();
         this.url = loader.getProperty(urlName);
     }
 

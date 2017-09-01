@@ -13,18 +13,17 @@ import java.util.concurrent.TimeUnit;
 
 public class WebDriverSetUp {
 
-    private WebDriver driver;
+    private static WebDriver driver;
     private PropertiesLoader pr = new PropertiesLoader();
 
-    public PageDriverImpl getDriver(ITestContext context) {
+    public WebDriver getDriver(ITestContext context) {
         setUp(context);
-        return new PageDriverImpl(driver);
+        return driver;
     }
 
-    public void setUp(ITestContext context) {
+    private void setUp(ITestContext context) {
 
-        String browserType = context.getCurrentXmlTest().getParameter("browserType");
-        switch (browserType) {
+        switch (context.getCurrentXmlTest().getParameter("browserType")) {
             case "FF":
 //                System.setProperty("webdriver.gecko.driver", pr.getProperty("GekoDrPath"));
                 driver = new FirefoxDriver();
