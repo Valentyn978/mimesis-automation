@@ -2,12 +2,15 @@ package com.tests;
 
 
 import com.configuration.AutomationMainModule;
+import com.configuration.driver.PageDriverImpl;
+import com.configuration.driver.WebDriverSetUp;
 import com.configuration.reporting.GivenWhenThenTestListener;
 import com.configuration.reporting.TestHtmlReporter;
 import com.configuration.reporting.TestListener;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
+import com.helpers.PropertiesLoader;
 import com.helpers.RestSender;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
@@ -27,12 +30,14 @@ public class AbstractTest {
 
     @Inject
     protected Injector injector;
+    @Inject
+    public WebDriverSetUp driverSetUp;
 
     public static CloseableHttpClient closeableClient;
 
     @BeforeSuite
-    public void setUpInjector() {
-        injector = Guice.createInjector(new AutomationMainModule());
+    public void setUpInjector(ITestContext context) {
+        injector = Guice.createInjector(new AutomationMainModule(context, new PropertiesLoader()));
         injector.injectMembers(this);
         restSender = new RestSender("MAIN_URL");
         closeableClient = restSender.setUpHttpClient();
@@ -41,6 +46,7 @@ public class AbstractTest {
     @AfterSuite
     public void tearDown(ITestContext testContext) {
         restSender.closeHttpClient();
+        driverSetUp.quiteDriver();
     }
 
     public String getJsonPathValue(String responseContent, String jsonPath) {

@@ -16,21 +16,21 @@ public class WebDriverSetUp {
     private WebDriver driver;
     private PropertiesLoader pr = new PropertiesLoader();
 
-    public PageDriverImpl getDriver(ITestContext context){
+    public PageDriverImpl getDriver(ITestContext context) {
         setUp(context);
         return new PageDriverImpl(driver);
     }
 
-    public void setUp(ITestContext context){
+    public void setUp(ITestContext context) {
 
         String browserType = context.getCurrentXmlTest().getParameter("browserType");
         switch (browserType) {
             case "FF":
-                System.setProperty("webdriver.gecko.driver", pr.getProperty("GekoDrPath"));
+//                System.setProperty("webdriver.gecko.driver", pr.getProperty("GekoDrPath"));
                 driver = new FirefoxDriver();
                 break;
             case "CHROME":
-                System.setProperty("webdriver.chrome.driver", pr.getProperty("ChromeDriverPath"));
+//                System.setProperty("webdriver.chrome.driver", pr.getProperty("ChromeDriverPath"));
                 driver = new ChromeDriver();
                 break;
             default:
@@ -45,7 +45,7 @@ public class WebDriverSetUp {
         driver.manage().deleteAllCookies();
     }
 
-    public void quiteDriver(){
+    public void quiteDriver() {
         if (driver != null) {
             driver.quit();
         }
