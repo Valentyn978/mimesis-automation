@@ -18,11 +18,20 @@ public class TestHtmlReporter extends HTMLReporter {
     private static Logger logger = Logger.getLogger(TestHtmlReporter.class);
     private static PropertiesLoader properties = new PropertiesLoader();
 
+    public static final String FOLDER_NAME_REPORT = "html_report";
+    public static final String PATH_TO_SCREEN_SHOTS = "path-to-images";
+    private static boolean ALREADY_GENERATED = false;
+
 
     @Override
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectoryName) {
 
-        String dir = properties.getProperty("testResultFolder");
+        if (!ALREADY_GENERATED){
+            ALREADY_GENERATED = true;
+        } else {
+            return;
+        }
+        String dir = System.getProperty(TestListener.CURRENT_TEST_REPORT_DIR) + File.separator + FOLDER_NAME_REPORT;
 
         File finalDir = new File(dir);
         if (finalDir.exists()) {
