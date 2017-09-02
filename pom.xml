@@ -4,7 +4,7 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com</groupId>
+	<groupId>mimesis</groupId>
 	<artifactId>mimesis</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
@@ -40,11 +40,11 @@
 		</dependency>
 
 		<!-- Allure -->
-		<!--<dependency>-->
-			<!--<groupId>io.qameta.allure</groupId>-->
-			<!--<artifactId>allure-testng</artifactId>-->
-			<!--<version>RELEASE</version>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>RELEASE</version>
+		</dependency>
 		<!--<dependency>-->
 			<!--<groupId>io.qameta.allure</groupId>-->
 			<!--<artifactId>allure-retrofit</artifactId>-->
@@ -56,11 +56,11 @@
 			<!--<artifactId>allure-testng-adaptor</artifactId>-->
 			<!--<version>${allure.version}</version>-->
 		<!--</dependency>-->
-		<dependency>
-			<groupId>ru.yandex.qatools.allure</groupId>
-			<artifactId>allure-testng-plugin</artifactId>
-			<version>1.2.4</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>ru.yandex.qatools.allure</groupId>-->
+			<!--<artifactId>allure-testng-plugin</artifactId>-->
+			<!--<version>1.2.4</version>-->
+		<!--</dependency>-->
 		<!--<dependency>-->
 			<!--<groupId>ru.yandex.qatools.allure</groupId>-->
 			<!--<artifactId>allure-java-annotations</artifactId>-->
@@ -71,22 +71,22 @@
 			<!--<artifactId>allure-java-aspects</artifactId>-->
 			<!--<version>${allure.version}</version>-->
 		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>ru.yandex.qatools.allure</groupId>-->
-			<!--<artifactId>allure-report-data</artifactId>-->
-			<!--<version>${allure.version}</version>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>ru.yandex.qatools.allure</groupId>-->
-			<!--<artifactId>allure-commons</artifactId>-->
-			<!--<version>1.4.0.RC4</version>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>ru.yandex.qatools.allure</groupId>
+			<artifactId>allure-report-data</artifactId>
+			<version>${allure.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ru.yandex.qatools.allure</groupId>
+			<artifactId>allure-commons</artifactId>
+			<version>1.4.0.RC4</version>
+		</dependency>
 
 		<!-- google -->
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
-			<version>3.0</version>
+			<version>4.0</version>
 		</dependency>
 
 		<!-- http client -->

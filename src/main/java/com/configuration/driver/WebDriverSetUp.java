@@ -25,11 +25,11 @@ public class WebDriverSetUp {
 
         switch (context.getCurrentXmlTest().getParameter("browserType")) {
             case "FF":
-//                System.setProperty("webdriver.gecko.driver", pr.getProperty("GekoDrPath"));
+                System.setProperty("webdriver.gecko.driver", pr.getProperty("GekoDrPath"));
                 driver = new FirefoxDriver();
                 break;
             case "CHROME":
-//                System.setProperty("webdriver.chrome.driver", pr.getProperty("ChromeDriverPath"));
+                System.setProperty("webdriver.chrome.driver", pr.getProperty("ChromeDriverPath"));
                 driver = new ChromeDriver();
                 break;
             default:

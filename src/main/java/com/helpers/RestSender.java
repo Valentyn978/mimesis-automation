@@ -32,13 +32,11 @@ public class RestSender {
     private String fullUrl;
     private String jSon = "";
 
-    @Inject
-    PropertiesLoader loader;
 
     protected SetRequestHeaders setHeaders = new SetRequestHeaders();
 
     public RestSender(String urlName) {
-        this.url = loader.getProperty(urlName);
+        this.url = new PropertiesLoader().getProperty(urlName);
     }
 
     public CloseableHttpClient setUpHttpClient() {

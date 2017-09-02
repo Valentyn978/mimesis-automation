@@ -21,6 +21,6 @@ public class WelcomePage implements OpenedInterface {
 
     @Override
     public boolean isOpen() {
-        return false;
+        return pageDriver.isPresentByXpath("//div/a[.='Translate']");
     }
 }
