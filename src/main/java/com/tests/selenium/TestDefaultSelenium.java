@@ -18,6 +18,7 @@ public class TestDefaultSelenium extends AbstractTest {
     public void test01GivenWorkEnvironmentWhenOpenWelcomePageThenCheck() {
         welcomePage.open();
         assertTrue(welcomePage.isOpen(), "Welcome Page does not open!");
+
         DotTestListener.log("Test is complete");
     }
 }

@@ -2,12 +2,11 @@ package com.pages;
 
 
 import com.configuration.driver.PageDriver;
-import com.configuration.driver.PageDriverImpl;
 import com.google.inject.Inject;
 import com.helpers.PropertiesLoader;
 
 
-public class WelcomePage implements OpenedInterface {
+public class JsonPlaceholder implements OpenedInterface {
 
     @Inject
     private PropertiesLoader propertiesLoader;
@@ -22,6 +21,6 @@ public class WelcomePage implements OpenedInterface {
     @Override
     public boolean isOpen() {
         pageDriver.takeScreenShot();
-        return pageDriver.isPresentByXpath("//div/a[.='Translate']");
+        return pageDriver.isPresentByXpath("//h1[contains(.,'JSONPlaceholder')]");
     }
 }

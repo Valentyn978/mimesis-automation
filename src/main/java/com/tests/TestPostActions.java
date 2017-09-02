@@ -2,12 +2,10 @@ package com.tests;
 
 import com.configuration.reporting.TestLogger;
 import org.apache.log4j.Logger;
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.helpers.DataProcessing.getRandomString;
+import static org.testng.Assert.assertEquals;
 
 
 public class TestPostActions extends AbstractTest {
@@ -25,7 +23,7 @@ public class TestPostActions extends AbstractTest {
     public void test01GivenWorkEnvironmentWhenCreateNewCommentThenCheck() {
         restSender.getResponseByPost("posts", NEW_COMMENT);
 
-        Assert.assertEquals(restSender.statusCode, 400);
+        assertEquals(restSender.statusCode, 400);
         LOGGER.info("Negative test. Action for create new comment is Fail. Test complete.");
     }
 }
