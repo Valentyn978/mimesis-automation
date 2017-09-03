@@ -20,7 +20,7 @@ public class TestPutActions extends AbstractTest {
             "   \\nharum architecto fugit inventore cupiditate\\nvoluptates magni quo et\"\n" + getRandomString(5);
 
 
-    @Test
+    @Test(description = "Negative test for PUT")
     public void test01GivenWorkEnvironmentWhenUpdateExistingCommentThenCheck() {
         restSender.getResponseByPut("posts", UPDATE_COMMENT);
 

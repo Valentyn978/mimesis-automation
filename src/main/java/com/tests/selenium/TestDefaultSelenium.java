@@ -14,7 +14,7 @@ public class TestDefaultSelenium extends AbstractTest {
     @Inject
     private WelcomePage welcomePage;
 
-    @Test
+    @Test(description = "Try to check for page is open")
     public void test01GivenWorkEnvironmentWhenOpenWelcomePageThenCheck() {
         welcomePage.open();
         assertTrue(welcomePage.isOpen(), "Welcome Page does not open!");

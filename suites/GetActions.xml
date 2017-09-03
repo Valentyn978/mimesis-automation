@@ -2,6 +2,7 @@
 <suite name="Check users data. Get actions">
     <test name="Test. Check users data. Get actions">
         <parameter name="browserType" value="CHROME" />
+        <parameter name="userName" value="Nicholas" />
         <classes>
             <class name="com.tests.TestUsersGetActions"/>
         </classes>

@@ -19,7 +19,7 @@ public class TestPostActions extends AbstractTest {
             "  }";
 
 
-    @Test
+    @Test(description = "Negative test for POST")
     public void test01GivenWorkEnvironmentWhenCreateNewCommentThenCheck() {
         restSender.getResponseByPost("posts", NEW_COMMENT);
 
