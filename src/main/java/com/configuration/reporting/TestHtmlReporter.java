@@ -46,6 +46,23 @@ public class TestHtmlReporter extends HTMLReporter {
         System.setProperty("org.uncommons.reportng.escape-output", "false");
         super.generateReport(xmlSuites, inputSuites, dir);
 
+        File tmpDir = new File(dir + "/html");
+        try {
+            FileUtils.copyDirectory(tmpDir, finalDir);
+            FileUtils.deleteDirectory(tmpDir);
+
+            //copy screen shots
+            String property = System.getProperty(PATH_TO_SCREEN_SHOTS);
+            if (property != null) {
+                File dirWithScreenShots = new File(property);
+                if (dirWithScreenShots.exists()) {
+                    FileUtils.moveDirectoryToDirectory(dirWithScreenShots, finalDir, true);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         logger.info("HTML report folder is " + finalDir.getPath());
     }
 
