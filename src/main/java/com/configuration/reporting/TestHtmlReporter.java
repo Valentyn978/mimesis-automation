@@ -18,11 +18,20 @@ public class TestHtmlReporter extends HTMLReporter {
     private static Logger logger = Logger.getLogger(TestHtmlReporter.class);
     private static PropertiesLoader properties = new PropertiesLoader();
 
+    public static final String FOLDER_NAME_REPORT = "html_report";
+    public static final String PATH_TO_SCREEN_SHOTS = "path-to-images";
+    private static boolean ALREADY_GENERATED = false;
+
 
     @Override
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectoryName) {
 
-        String dir = properties.getProperty("testResultFolder");
+        if (!ALREADY_GENERATED){
+            ALREADY_GENERATED = true;
+        } else {
+            return;
+        }
+        String dir = System.getProperty(TestListener.CURRENT_TEST_REPORT_DIR) + File.separator + FOLDER_NAME_REPORT;
 
         File finalDir = new File(dir);
         if (finalDir.exists()) {
@@ -36,6 +45,23 @@ public class TestHtmlReporter extends HTMLReporter {
         List<ISuite> inputSuites = getSuitesWithGrandTotal(suites);
         System.setProperty("org.uncommons.reportng.escape-output", "false");
         super.generateReport(xmlSuites, inputSuites, dir);
+
+        File tmpDir = new File(dir + "/html");
+        try {
+            FileUtils.copyDirectory(tmpDir, finalDir);
+            FileUtils.deleteDirectory(tmpDir);
+
+            //copy screen shots
+            String property = System.getProperty(PATH_TO_SCREEN_SHOTS);
+            if (property != null) {
+                File dirWithScreenShots = new File(property);
+                if (dirWithScreenShots.exists()) {
+                    FileUtils.moveDirectoryToDirectory(dirWithScreenShots, finalDir, true);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         logger.info("HTML report folder is " + finalDir.getPath());
     }

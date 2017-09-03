@@ -1,2 +1,14 @@
+#  Output directories  #
+testResultFolder = report
+# -------------------- #
+
+######### System properties ##########
+libs = libs
+ChromeDriverPath =/usr/lib/chromium-browser/chromedriver
+GekoDrPath =/usr/lib/geckodriver
+TimeOut = 1400
+TimeOutBIG = 7000
+TimeWAIT = 120
+#######################################
+
 MAIN_URL=https://jsonplaceholder.typicode.com/
-testResultFolder=report

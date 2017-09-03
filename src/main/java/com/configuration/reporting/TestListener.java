@@ -9,6 +9,7 @@ import org.testng.ITestResult;
 
 public class TestListener implements ITestListener {
 
+    public static final String CURRENT_TEST_REPORT_DIR = "currentTestReportDir";
     private final Logger logger = TestLogger.getLogger(TestListener.class);
 
     @Override
