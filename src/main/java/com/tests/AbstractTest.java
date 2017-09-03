@@ -24,10 +24,10 @@ import org.testng.annotations.Listeners;
 @Listeners({TestListener.class, TestHtmlReporter.class, GivenWhenThenTestListener.class})
 public class AbstractTest {
 
-    static RestSender restSender;
+    public RestSender restSender;
 
     @Inject
-    protected Injector injector;
+    public Injector injector;
 
     public static CloseableHttpClient closeableClient;
 

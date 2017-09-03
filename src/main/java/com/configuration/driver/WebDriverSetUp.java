@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class WebDriverSetUp {
 
-    private static WebDriver driver;
+    private WebDriver driver;
     private PropertiesLoader pr = new PropertiesLoader();
 
     public WebDriver getDriver(ITestContext context) {
@@ -39,7 +39,7 @@ public class WebDriverSetUp {
 
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(pr.getProperty("TimeWAIT")), TimeUnit.MILLISECONDS);
         driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(pr.getProperty("TimeOut")), TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(800, 600));
+        driver.manage().window().setSize(new Dimension(1024, 900));
         driver.manage().window().setPosition(new Point(60, 1));
         driver.manage().deleteAllCookies();
     }

@@ -12,7 +12,7 @@ import org.testng.TestNGException;
 
 public class AutomationMainModule extends AbstractModule {
 
-    private final ITestContext testContext;
+    private ITestContext testContext;
 
     public AutomationMainModule(ITestContext testContext) {
         this.testContext = testContext;

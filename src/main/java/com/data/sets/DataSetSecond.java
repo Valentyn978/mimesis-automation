@@ -2,8 +2,6 @@ package com.data.sets;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import static com.helpers.DataProcessing.getRandomString;
-
 public class DataSetSecond implements DataSets
 {
     @Override
