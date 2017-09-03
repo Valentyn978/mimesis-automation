@@ -2,6 +2,7 @@ package com.tests;
 
 
 import com.configuration.AutomationMainModule;
+import com.configuration.driver.PageDriver;
 import com.configuration.reporting.GivenWhenThenTestListener;
 import com.configuration.reporting.TestHtmlReporter;
 import com.configuration.reporting.TestListener;
@@ -23,7 +24,7 @@ import org.testng.annotations.Listeners;
 @Listeners({TestListener.class, TestHtmlReporter.class, GivenWhenThenTestListener.class})
 public class AbstractTest {
 
-    protected static RestSender restSender;
+    static RestSender restSender;
 
     @Inject
     protected Injector injector;
@@ -31,8 +32,8 @@ public class AbstractTest {
     public static CloseableHttpClient closeableClient;
 
     @BeforeSuite
-    public void setUpInjector() {
-        injector = Guice.createInjector(new AutomationMainModule());
+    public void setUpInjector(ITestContext context) {
+        injector = Guice.createInjector(new AutomationMainModule(context));
         injector.injectMembers(this);
         restSender = new RestSender("MAIN_URL");
         closeableClient = restSender.setUpHttpClient();
@@ -41,6 +42,7 @@ public class AbstractTest {
     @AfterSuite
     public void tearDown(ITestContext testContext) {
         restSender.closeHttpClient();
+        injector.getInstance(PageDriver.class).quit();
     }
 
     public String getJsonPathValue(String responseContent, String jsonPath) {
