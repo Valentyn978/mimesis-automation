@@ -31,10 +31,6 @@ public class DotTestListener extends TestListenerAdapter {
         }
     }
 
-    public static void logNoNewline(String string) {
-        System.out.print(string);
-    }
-
     // Reporting to Console
     @Override
     public void onStart(ITestContext tr) {

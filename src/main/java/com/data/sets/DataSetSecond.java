@@ -28,4 +28,14 @@ public class DataSetSecond implements DataSets
     public String getPutDataUser() {
         throw new NotImplementedException();
     }
+
+    @Override
+    public String getSourceDataTranslator() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String getResultDataTranslator() {
+        throw new NotImplementedException();
+    }
 }
