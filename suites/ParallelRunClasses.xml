@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Check users data. Get actions. Parallel execution" parallel="tests" thread-count="3">
+    <test name="Test parallel. Check users data. Get actions">
+        <parameter name="browserType" value="CHROME" />
+        <parameter name="userName" value="Nicholas" />
+        <parameter name="dataSet" value="firstDataSet" />
+        <classes>
+            <class name="com.tests.TestUsersGetActions"/>
+        </classes>
+    </test>
+    <test name="Test parallel. Check users data. Post Actions">
+        <parameter name="browserType" value="FF" />
+        <parameter name="dataSet" value="firstDataSet" />
+        <classes>
+            <class name="com.tests.TestPostActions"/>
+        </classes>
+    </test>
+    <test name="Test parallel. Test. Main selenium.">
+        <parameter name="browserType" value="CHROME" />
+        <classes>
+            <class name="com.tests.selenium.TestDefaultSelenium"/>
+        </classes>
+    </test>
+</suite>

@@ -10,8 +10,9 @@ Frameworks facilitating the hard life of an Q&amp;A engineers
 
 
 <H3>What's planned:</H3>
-<ol type='a'>Create ability for:
+<ol type=1>Create ability for:
 <li>Web interfaces testing (Selenium WebDriver)</li>
 <li>Generate HTML-report in another way</li>
 <li>Working with DB</li>
+<li>Parallel execution</li>
 </ol>

@@ -45,32 +45,6 @@
 			<artifactId>allure-testng</artifactId>
 			<version>RELEASE</version>
 		</dependency>
-		<!--<dependency>-->
-			<!--<groupId>io.qameta.allure</groupId>-->
-			<!--<artifactId>allure-retrofit</artifactId>-->
-			<!--<version>LATEST</version>-->
-		<!--</dependency>-->
-
-		<!--<dependency>-->
-			<!--<groupId>ru.yandex.qatools.allure</groupId>-->
-			<!--<artifactId>allure-testng-adaptor</artifactId>-->
-			<!--<version>${allure.version}</version>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>ru.yandex.qatools.allure</groupId>-->
-			<!--<artifactId>allure-testng-plugin</artifactId>-->
-			<!--<version>1.2.4</version>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>ru.yandex.qatools.allure</groupId>-->
-			<!--<artifactId>allure-java-annotations</artifactId>-->
-			<!--<version>${allure.version}</version>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>ru.yandex.qatools.allure</groupId>-->
-			<!--<artifactId>allure-java-aspects</artifactId>-->
-			<!--<version>${allure.version}</version>-->
-		<!--</dependency>-->
 		<dependency>
 			<groupId>ru.yandex.qatools.allure</groupId>
 			<artifactId>allure-report-data</artifactId>

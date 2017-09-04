@@ -57,7 +57,9 @@ public class TestUsersGetActions extends AbstractTest {
     @Test(description = "Getting all user data by user ID",
             dependsOnMethods = "test02GivenUserListWhenGetUserIdThenCheck")
     public void test03GivenListOfUsersWhenFindUserByIdThenCheck() {
-        JSONArray users = getJsonArrayByGetRequest("posts?userId=" + userId.replace("[", "").replace("]", ""));
+        assertTrue(jsonPlaceholder.isOpen(), "Home page work environment does not open!");
+        JSONArray users = getJsonArrayByGetRequest("posts?userId="
+                + userId.replace("[", "").replace("]", ""));
 
         assertNotNull(users, String.format("User name: %s does not have posts.", userName));
         LOGGER.info(String.format("Given user by ID: %s have data: %s", userId, users));

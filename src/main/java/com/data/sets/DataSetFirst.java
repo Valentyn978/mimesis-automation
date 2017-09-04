@@ -42,4 +42,14 @@ public class DataSetFirst implements DataSets
                 "   \\nharum architecto fugit inventore cupiditate\\nvoluptates magni quo et\"\n"
                 + getRandomString(5);
     }
+
+    @Override
+    public String getSourceDataTranslator() {
+        return "Текст источник";
+    }
+
+    @Override
+    public String getResultDataTranslator() {
+        return "Source text";
+    }
 }
