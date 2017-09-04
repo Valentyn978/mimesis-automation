@@ -8,9 +8,6 @@ import org.apache.http.client.methods.*;
 import static com.helpers.RestSender.headerData;
 import static com.helpers.RestSender.headerName;
 
-/**
- * Created on 07.07.16.
- */
 public class SetRequestHeaders {
 
 	public <T> T setHeaders(String urlToRequest, String type) {

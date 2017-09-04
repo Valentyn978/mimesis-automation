@@ -6,4 +6,6 @@ public interface DataSets {
     String getUserPassword();
     String getPostDataUser();
     String getPutDataUser();
+    String getSourceDataTranslator();
+    String getResultDataTranslator();
 }

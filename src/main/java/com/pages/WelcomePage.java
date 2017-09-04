@@ -9,6 +9,10 @@ import com.helpers.PropertiesLoader;
 
 public class WelcomePage implements OpenedInterface {
 
+    public static final String RESULT_AREA = "//*[@id='gt-res-dir-ctr']";
+    public static final String PAGE_FLAG = "//div/a[.='Translate']";
+    public static final String SOURCE_AREA = "//*[@id='source']";
+
     @Inject
     private PropertiesLoader propertiesLoader;
     @Inject
@@ -22,6 +26,17 @@ public class WelcomePage implements OpenedInterface {
     @Override
     public boolean isOpen() {
         pageDriver.takeScreenShot();
-        return pageDriver.isPresentByXpath("//div/a[.='Translate']");
+        return pageDriver.isPresentByXpath(PAGE_FLAG);
+    }
+
+    public void putTextToSourceArea(String sourceText) {
+        pageDriver.fillValue(SOURCE_AREA, sourceText);
+    }
+
+    public String getTextFromResultArea() {
+        pageDriver.clickObjectByXPath(RESULT_AREA, "Click by result area");
+        String textFromObject = pageDriver.getTextFromObject(RESULT_AREA);
+        pageDriver.takeScreenShot();
+        return textFromObject;
     }
 }
