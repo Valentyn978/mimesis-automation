@@ -16,15 +16,13 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 
 
 @Listeners({TestListener.class, TestHtmlReporter.class, GivenWhenThenTestListener.class})
 public class AbstractTest {
 
-    public RestSender restSender;
+    public RestSender restSender = new RestSender("MAIN_URL");
 
     @Inject
     public Injector injector;
@@ -32,17 +30,25 @@ public class AbstractTest {
     public static CloseableHttpClient closeableClient;
 
     @BeforeSuite
-    public void setUpInjector(ITestContext context) {
-        injector = Guice.createInjector(new AutomationMainModule(context));
-        injector.injectMembers(this);
-        restSender = new RestSender("MAIN_URL");
+    public void setUpSuite(ITestContext context) {
         closeableClient = restSender.setUpHttpClient();
     }
 
     @AfterSuite
-    public void tearDown(ITestContext testContext) {
+    public void tearDownSuite() {
         restSender.closeHttpClient();
-        injector.getInstance(PageDriver.class).quit();
+    }
+
+    @BeforeTest
+    public void setUpBeforeTest(ITestContext context) {
+        injector = Guice.createInjector(new AutomationMainModule(context));
+        injector.injectMembers(this);
+    }
+
+    @AfterTest
+    public void tearDownAfterTest() {
+        if (null != injector)
+            injector.getInstance(PageDriver.class).quit();
     }
 
     public String getJsonPathValue(String responseContent, String jsonPath) {

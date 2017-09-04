@@ -7,8 +7,13 @@ import com.data.sets.DataSetFirst;
 import com.data.sets.DataSetSecond;
 import com.data.sets.DataSets;
 import com.google.inject.AbstractModule;
-import org.testng.ITestContext;
-import org.testng.TestNGException;
+import com.google.inject.Injector;
+import com.google.inject.Module;
+import org.testng.*;
+import org.testng.xml.XmlSuite;
+import org.testng.xml.XmlTest;
+
+import java.util.*;
 
 public class AutomationMainModule extends AbstractModule {
 

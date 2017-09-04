@@ -16,7 +16,7 @@ public class WelcomePage implements OpenedInterface {
 
     @Override
     public void open() {
-        pageDriver.get(propertiesLoader.getProperty("MAIN_URL"));
+        pageDriver.get(propertiesLoader.getProperty("MAIN_URL_SELENIUM"));
     }
 
     @Override

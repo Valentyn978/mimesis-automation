@@ -12,3 +12,4 @@ TimeWAIT = 120
 #######################################
 
 MAIN_URL=https://jsonplaceholder.typicode.com/
+MAIN_URL_SELENIUM=https://translate.google.com/#en
