@@ -2,7 +2,6 @@ package com.pages;
 
 
 import com.configuration.driver.PageDriver;
-import com.configuration.driver.PageDriverImpl;
 import com.google.inject.Inject;
 import com.helpers.PropertiesLoader;
 
@@ -34,7 +33,7 @@ public class WelcomePage implements OpenedInterface {
     }
 
     public String getTextFromResultArea() {
-        pageDriver.clickObjectByXPath(RESULT_AREA);
+        pageDriver.clickObjectByXPath(RESULT_AREA, "Click by result area");
         String textFromObject = pageDriver.getTextFromObject(RESULT_AREA);
         pageDriver.takeScreenShot();
         return textFromObject;

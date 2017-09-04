@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.*;
 import java.util.List;
@@ -223,7 +224,8 @@ public class PageDriverImpl implements PageDriver {
     }
 
     public void explicitWait(String xPath, int time, String alias) {
-        DotTestListener.logOnly(String.format("Start Explicit Wait for \"%s\", time to wait: %d seconds.", (alias != null) ? alias : xPath, time));
+        DotTestListener.logOnly(String.format("Start Explicit Wait for \"%s\", time to wait: %d seconds.",
+                (alias != null) ? alias : xPath, time));
         WebDriverWait wait = new WebDriverWait(webDriver, time);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
     }
@@ -253,9 +255,8 @@ public class PageDriverImpl implements PageDriver {
 
     @Override
     public void takeScreenShotUseRobot() {
-
+        throw new NotImplementedException();
     }
-
 
     public void sendDownAndPresEnter(String xPath, int n) {
         WebElement cb = webDriver.findElement(By.xpath(xPath));
