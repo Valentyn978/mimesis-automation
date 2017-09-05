@@ -1,6 +1,5 @@
 package com.configuration.driver;
 
-import com.configuration.reporting.DotTestListener;
 import com.helpers.PropertiesLoader;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
@@ -8,8 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
-
+import org.testng.TestNGException;
+import java.io.File;
 import java.util.concurrent.TimeUnit;
+
 
 public class WebDriverSetUp {
 
@@ -23,18 +24,26 @@ public class WebDriverSetUp {
 
     private void setUp(ITestContext context) {
 
-        switch (context.getCurrentXmlTest().getParameter("browserType")) {
+        String parameterOfSuite = "browserType";
+        switch (context.getCurrentXmlTest().getParameter(parameterOfSuite)) {
             case "FF":
-                System.setProperty("webdriver.gecko.driver", pr.getProperty("GekoDrPath"));
+                String gekoDrPath = pr.getProperty("GekoDrPath");
+                if (!new File(gekoDrPath).exists())
+                    throw new TestNGException("Driver for FireFox browser does not present, see 'base.properties' file");
+                System.setProperty("webdriver.gecko.driver", gekoDrPath);
                 driver = new FirefoxDriver();
                 break;
             case "CHROME":
-                System.setProperty("webdriver.chrome.driver", pr.getProperty("ChromeDriverPath"));
+                String chromeDriverPath = pr.getProperty("ChromeDriverPath");
+                if (!new File(chromeDriverPath).exists())
+                    throw new TestNGException("Driver for Chrome browser does not present, see 'base.properties' file");
+                System.setProperty("webdriver.chrome.driver", chromeDriverPath);
                 driver = new ChromeDriver();
                 break;
             default:
                 driver = null;
-                DotTestListener.log("Type of browser not valid!");
+                throw new TestNGException(String.format("Type of browser not valid, " +
+                        "see parameter %s in 'Suite.xml' file.", parameterOfSuite));
         }
 
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(pr.getProperty("TimeWAIT")), TimeUnit.MILLISECONDS);
@@ -42,11 +51,5 @@ public class WebDriverSetUp {
         driver.manage().window().setSize(new Dimension(1024, 900));
         driver.manage().window().setPosition(new Point(60, 1));
         driver.manage().deleteAllCookies();
-    }
-
-    public void quiteDriver() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 }

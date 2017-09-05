@@ -13,6 +13,7 @@ import org.testng.*;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
+import java.io.IOException;
 import java.util.*;
 
 public class AutomationMainModule extends AbstractModule {
