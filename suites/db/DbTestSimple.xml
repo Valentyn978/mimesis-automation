@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Check users data. Post Actions">
+    <test name="Test. Check users data. Post Actions">
+        <parameter name="browserType" value="CHROME" />
+        <parameter name="dataSet" value="firstDataSet" />
+        <classes>
+            <class name="com.tests.db.TestDbSimple"/>
+        </classes>
+    </test>
+</suite>
