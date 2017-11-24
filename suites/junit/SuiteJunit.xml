@@ -10,6 +10,3 @@
         </classes>
     </test>
 </suite>
-        <!--As a user I want to be able to run JUnit tests via maven according to suite xml file which follows TestNG format (only the test suite structure) without actually using TestNG.-->
-        <!--E.g. I have 2 JUnit test classes with 2 tests in each of them. I want to run (via JUnit) only the 1st test from class 1 and both tests from class 2 using the following xml.-->
-        <!--https://www.tutorialspoint.com/junit/junit_test_framework.htm-->
