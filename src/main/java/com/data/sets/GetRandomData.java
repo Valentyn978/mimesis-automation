@@ -5,9 +5,6 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Created by valentyn.yanchii on 21-Nov-17.
- */
 public class GetRandomData implements DataSets {
 
     private static AtomicInteger RAND_COUNT = new AtomicInteger(0);

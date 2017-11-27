@@ -9,10 +9,5 @@ Frameworks facilitating the hard life of an Q&amp;A engineers
 <p>It is also used for further extension to support interaction with <b>Asynchronous</b> data transmission systems, <b>Databases</b> and Web <b>User Interfaces</b>.</p>
 
 
-<H3>What's planned:</H3>
-<ol type=1>Create ability for:
-<li>Web interfaces testing (Selenium WebDriver)</li>
-<li>Generate HTML-report in another way</li>
-<li>Working with DB</li>
-<li>Parallel execution</li>
-</ol>
+<H3>Report for unit test:</H3>
+target/surefire-reports/index.html
