@@ -11,3 +11,5 @@ Frameworks facilitating the hard life of an Q&amp;A engineers
 
 <H3>Report for unit test:</H3>
 target/surefire-reports/index.html
+<p>or</p>
+target/allure-results (execute allure generate target\allure-results for create static html report)
