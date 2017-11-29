@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite1">
+    <test junit="true" name="test.mixed.JUnit4Test1">
+        <classes>
+            <class name="test.mixed.JUnit4FirstUnitTest">
+                <methods>
+                    <include name="testMethod1" />
+                </methods>
+            </class> <!-- test.mixed.JUnit4FirstUnitTest -->
+            <class name="test.mixed.JUnit4SecondUnitTest" /> <!-- test.mixed.JUnit4SecondUnitTest -->
+        </classes>
+    </test> <!-- test.mixed.JUnit4Test1 -->
+</suite> <!-- Command line suite -->

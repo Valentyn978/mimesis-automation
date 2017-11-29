@@ -1,12 +1,13 @@
+package test.mixed;
+
 import com.helpers.SetRequestHeaders;
 import org.junit.Assert;
-import org.testng.annotations.Test;
 
-public class FirstUnitTest {
+public class JUnit4FirstUnitTest {
 
     private SetRequestHeaders setHeaders = new SetRequestHeaders();
 
-    @Test
+    @org.junit.Test
     public void testMethod1(){
         Object ob = setHeaders.setHeaders("http://test.com", "POST");
 
@@ -14,7 +15,7 @@ public class FirstUnitTest {
                 "org.apache.http.client.methods.HttpPost");
     }
 
-    @Test
+    @org.junit.Test
     public void testMethod2(){
         Object ob = setHeaders.setHeaders("http://test.com", "PATCH");
 

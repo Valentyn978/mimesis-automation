@@ -15,59 +15,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<start-class>com.TestingApplication</start-class>
-		<selenium.version>3.7.1</selenium.version>
-		<aspectj.version>1.8.9</aspectj.version>
-		<allure.version>1.5.4</allure.version>
+		<surefire.version>2.20.1</surefire.version>
 	</properties>
 
 	<dependencies>
-
-		<!-- Selenium -->
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-firefox-driver</artifactId>
-			<version>${selenium.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-chrome-driver</artifactId>
-			<version>${selenium.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>${selenium.version}</version>
-		</dependency>
-
-		<!-- Allure -->
-		<dependency>
-			<groupId>io.qameta.allure</groupId>
-			<artifactId>allure-testng</artifactId>
-			<version>2.0-BETA21</version>
-		</dependency>
-		<dependency>
-			<groupId>ru.yandex.qatools.allure</groupId>
-			<artifactId>allure-report-data</artifactId>
-			<version>${allure.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ru.yandex.qatools.allure</groupId>
-			<artifactId>allure-commons</artifactId>
-			<version>${allure.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ru.yandex.qatools.allure</groupId>
-			<artifactId>allure-testng-adaptor</artifactId>
-			<version>${allure.version}</version>
-		</dependency>
-
-		<!-- google -->
-		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
-			<version>4.0</version>
-		</dependency>
 
 		<!-- http client -->
 		<dependency>
@@ -76,97 +27,20 @@
 			<version>4.5.2</version>
 		</dependency>
 
-		<!-- JSON -->
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-json</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jsoup</groupId>
-			<artifactId>jsoup</artifactId>
-			<version>1.8.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.skyscreamer</groupId>
-			<artifactId>jsonassert</artifactId>
-			<version>1.4.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.jayway.jsonpath</groupId>
-			<artifactId>json-path</artifactId>
-			<version>2.2.0</version>
-		</dependency>
-
 		<!-- Test -->
-		<dependency>
-			<groupId>org.easytesting</groupId>
-			<artifactId>fest-assert-core</artifactId>
-			<version>2.0M10</version>
-		</dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>6.8.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.uncommons</groupId>
-			<artifactId>reportng</artifactId>
-			<version>1.1.4</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.testng</groupId>
-					<artifactId>testng</artifactId>
-				</exclusion>
-			</exclusions>
+			<version>6.11</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.21</version>
-		</dependency>
 
-		<!-- COMMONS -->
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.5</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-collections</groupId>
-			<artifactId>commons-collections</artifactId>
-			<version>3.2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-
-		<!-- LOGGING -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
-
-		<!-- TIME -->
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.2</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -183,52 +57,13 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-					<archive>
-						<manifest>
-							<mainClass>${start-class}</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.20.1</version>
+				<version>${surefire.version}</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>src/test/java/suites/SuiteJunit.xml</suiteXmlFile>
+						<suiteXmlFile>src/test/java/suites/testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
-					<testFailureIgnore>false</testFailureIgnore>
-					<argLine>
-						-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-					</argLine>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.aspectj</groupId>
-						<artifactId>aspectjweaver</artifactId>
-						<version>${aspectj.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>versions-maven-plugin</artifactId>
-				<version>2.0</version>
-				<!--versions:display-dependency-updates-->
 			</plugin>
 		</plugins>
 	</build>

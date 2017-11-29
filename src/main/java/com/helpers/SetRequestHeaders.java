@@ -5,9 +5,6 @@ import org.apache.http.HeaderElement;
 import org.apache.http.ParseException;
 import org.apache.http.client.methods.*;
 
-import static com.helpers.RestSender.headerData;
-import static com.helpers.RestSender.headerName;
-
 /**
  * Created on 07.07.16.
  */
@@ -70,6 +67,6 @@ public class SetRequestHeaders {
 
 	protected Header[] getHeaders() {
 		return new Header[]{getHeader("Content-Type", "application/json"),
-				getHeader("Accept", "application/json"), getHeader(headerName, headerData)};
+				getHeader("Accept", "application/json"), getHeader("Accept", "text/html")};
 	}
 }
