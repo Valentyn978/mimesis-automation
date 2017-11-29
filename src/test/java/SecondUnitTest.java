@@ -1,8 +1,8 @@
 import com.data.sets.DataSetFirst;
 import com.data.sets.DataSets;
 import com.data.sets.GetRandomData;
+import org.junit.Test;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 public class SecondUnitTest {
 
