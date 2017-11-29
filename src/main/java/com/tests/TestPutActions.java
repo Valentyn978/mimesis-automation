@@ -1,5 +1,6 @@
 package com.tests;
 
+import com.configuration.reporting.DotTestListener;
 import com.configuration.reporting.TestLogger;
 import com.data.sets.DataSets;
 import com.google.inject.Inject;
@@ -21,7 +22,7 @@ public class TestPutActions extends AbstractTest {
     public void test01GivenWorkEnvironmentWhenUpdateExistingCommentThenCheck() {
         restSender.getResponseByPut("posts", sets.getPutDataUser());
 
-        assertEquals(restSender.statusCode, 400);
+        assertEquals(restSender.statusCode, 500);
         LOGGER.info("Negative test. Action for update existing comment is Fail. Test complete.");
     }
 

@@ -2,6 +2,7 @@ package com.pages;
 
 
 import com.configuration.driver.PageDriver;
+import com.configuration.driver.PageDriverImpl;
 import com.google.inject.Inject;
 import com.helpers.PropertiesLoader;
 
