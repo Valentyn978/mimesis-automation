@@ -34,7 +34,7 @@ public class WelcomePage implements OpenedInterface {
     }
 
     public String getTextFromResultArea() {
-        pageDriver.clickObjectByXPath(RESULT_AREA, "Click by result area");
+        pageDriver.clickObjectByXPath(RESULT_AREA);
         String textFromObject = pageDriver.getTextFromObject(RESULT_AREA);
         pageDriver.takeScreenShot();
         return textFromObject;
