@@ -16,6 +16,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<surefire.version>2.20.1</surefire.version>
+		<concordion.version>2.1.1</concordion.version>
 	</properties>
 
 	<dependencies>
@@ -38,6 +39,12 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.concordion</groupId>
+			<artifactId>concordion</artifactId>
+			<version>${concordion.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -63,6 +70,12 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>src/test/java/suites/testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
+					<systemPropertyVariables>
+						<concordion.output.dir>target/concordion</concordion.output.dir>
+					</systemPropertyVariables>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>
