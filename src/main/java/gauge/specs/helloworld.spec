@@ -1,12 +1,14 @@
+<!-- - name of specification-->
 Configuration
 =============
 
+Tags: login, admin
+
+<!-- - name of scenario-->
 Admin Login
 -----------
+<!-- - name of step with parameters-->
 * Say "hello" to "gauge"
-<!--* User must login as "admin"-->
-<!--* Navigate to the configuration page-->
-
 
 * Vowels in English language are "aeiou".
 
