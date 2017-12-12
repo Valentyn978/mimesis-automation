@@ -2,7 +2,7 @@ package test.mixed;
 
 import com.data.sets.DataSetFirst;
 import com.data.sets.DataSets;
-import com.data.sets.GetRandomData;
+import com.data.sets.RandomData;
 import org.junit.Assert;
 
 public class JUnit4SecondUnitTest {
@@ -15,7 +15,7 @@ public class JUnit4SecondUnitTest {
 
     @org.junit.Test
     public void testMethod2(){
-        DataSets data = new GetRandomData();
+        DataSets data = new RandomData();
         Assert.assertTrue("User name does not correct.", data.getUserName().contains("UserName_"));
     }
 }

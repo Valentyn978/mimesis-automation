@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class DriverSetUp {
+public class DriverCucumber {
 
     private static long DEFAULT_WAIT = 5;
     private static WebDriver driver = null;

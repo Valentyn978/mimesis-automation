@@ -1,11 +1,11 @@
 package test.mixed;
 
-import com.helpers.SetRequestHeaders;
+import com.helpers.RequestHeaders;
 import org.junit.Assert;
 
 public class JUnit4FirstUnitTest {
 
-    private SetRequestHeaders setHeaders = new SetRequestHeaders();
+    private RequestHeaders setHeaders = new RequestHeaders();
 
     @org.junit.Test
     public void testMethod1(){
