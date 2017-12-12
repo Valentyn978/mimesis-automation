@@ -1,6 +1,6 @@
 package cucumber.selenium.impl;
 
-import cucumber.configuration.DriverSetUp;
+import cucumber.configuration.DriverCucumber;
 import cucumber.selenium.AbstractTest;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ScreenShotProcessing implements AbstractTest {
-    protected WebDriver driver = DriverSetUp.getDefaultDriver();
+    protected WebDriver driver = DriverCucumber.getDefaultDriver();
 
     public ScreenShotProcessing() {
     }

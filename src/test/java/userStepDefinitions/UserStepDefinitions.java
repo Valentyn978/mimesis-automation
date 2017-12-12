@@ -4,7 +4,7 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.configuration.DriverSetUp;
+import cucumber.configuration.DriverCucumber;
 import cucumber.runtime.ScenarioImpl;
 import cucumber.runtime.java.StepDefAnnotation;
 import cucumber.selenium.AbstractTest;
@@ -24,7 +24,7 @@ import java.io.IOException;
 @StepDefAnnotation
 public class UserStepDefinitions implements AbstractTest {
 	
-	protected WebDriver driver = DriverSetUp.getDefaultDriver();
+	protected WebDriver driver = DriverCucumber.getDefaultDriver();
 	
 	@Given("^I should get logged-in$")
 	public void should_logged_in() throws Throwable {
@@ -396,6 +396,6 @@ public class UserStepDefinitions implements AbstractTest {
 
 	@After
 	public final void tearDown() {
-		DriverSetUp.closeDriver();
+		DriverCucumber.closeDriver();
 	}
 }

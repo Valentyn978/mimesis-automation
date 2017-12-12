@@ -8,7 +8,7 @@ import org.apache.http.client.methods.*;
 /**
  * Created on 07.07.16.
  */
-public class SetRequestHeaders {
+public class RequestHeaders {
 
 	public <T> T setHeaders(String urlToRequest, String type) {
 		Header[] headers = getHeaders();

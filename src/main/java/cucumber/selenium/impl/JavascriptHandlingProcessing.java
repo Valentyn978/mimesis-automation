@@ -1,11 +1,11 @@
 package cucumber.selenium.impl;
 
-import cucumber.configuration.DriverSetUp;
+import cucumber.configuration.DriverCucumber;
 import cucumber.selenium.AbstractTest;
 import org.openqa.selenium.WebDriver;
 
 public class JavascriptHandlingProcessing implements AbstractTest {
-    protected WebDriver driver = DriverSetUp.getDefaultDriver();
+    protected WebDriver driver = DriverCucumber.getDefaultDriver();
 
     public JavascriptHandlingProcessing() {
     }

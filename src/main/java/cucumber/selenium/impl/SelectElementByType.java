@@ -1,12 +1,12 @@
 package cucumber.selenium.impl;
 
-import cucumber.configuration.DriverSetUp;
+import cucumber.configuration.DriverCucumber;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SelectElementByType {
-    protected WebDriver driver = DriverSetUp.getDefaultDriver();
+    protected WebDriver driver = DriverCucumber.getDefaultDriver();
     protected WebDriverWait wait;
 
     public SelectElementByType() {
