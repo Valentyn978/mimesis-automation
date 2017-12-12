@@ -9,7 +9,9 @@ Frameworks facilitating the hard life of an Q&amp;A engineers
 <p>It is also used for further extension to support interaction with <b>Asynchronous</b> data transmission systems, <b>Databases</b> and Web <b>User Interfaces</b>.</p>
 
 
-<H3>Report for unit test:</H3>
-target/surefire-reports/index.html
-<p>or</p>
-target/allure-results (execute allure generate target\allure-results for create static html report)
+<H3>Intellij IDEA cucumber set up<H3>
+- Install Cucumber for java
+- In set Run/Debug config:
+- set main class - "cucumber.RunMe"
+- set "glue" as "UserStepDefinitions"
+- "feature or folder path" - "${user.dir}/src/test/resources"
