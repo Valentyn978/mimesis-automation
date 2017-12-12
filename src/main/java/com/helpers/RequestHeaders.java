@@ -8,7 +8,7 @@ import org.apache.http.client.methods.*;
 import static com.helpers.RestSender.headerData;
 import static com.helpers.RestSender.headerName;
 
-public class SetRequestHeaders {
+public class RequestHeaders {
 
 	public <T> T setHeaders(String urlToRequest, String type) {
 		Header[] headers = getHeaders();

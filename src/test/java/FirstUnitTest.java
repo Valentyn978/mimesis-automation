@@ -1,10 +1,10 @@
-import com.helpers.SetRequestHeaders;
+import com.helpers.RequestHeaders;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class FirstUnitTest {
 
-    private SetRequestHeaders setHeaders = new SetRequestHeaders();
+    private RequestHeaders setHeaders = new RequestHeaders();
 
     @Test
     public void testMethod1(){
