@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumberHtmlReport"},
-        features = "classpath:main.feature",
+        features = "classpath:google_check.feature",
         glue = {"userStepDefinitions"}
 )
 

@@ -376,6 +376,13 @@ public class UserStepDefinitions implements AbstractTest {
 		screenshotObj.takeScreenShot();
 	}
 
+	@Then("^I put value \"([^\"]*)\" into input field having (.+) \"([^\"]*)\" and press Enter button$")
+	public void press_enter(String text, String type, String accessName) throws Exception {
+		commonObj.validateLocator(type);
+		inputObj.enterText(type, text, accessName);
+		javascriptObj.pressKeyboardButton("Enter");
+	}
+
 	@After
 	public final void takeScreenShot(Scenario scenario) {
 		if(scenario.isFailed()) {
