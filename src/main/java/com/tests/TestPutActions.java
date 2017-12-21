@@ -1,13 +1,13 @@
 package com.tests;
 
-import com.configuration.reporting.DotTestListener;
 import com.configuration.reporting.TestLogger;
 import com.data.sets.DataSets;
 import com.google.inject.Inject;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 
 public class TestPutActions extends AbstractTest {
@@ -22,7 +22,7 @@ public class TestPutActions extends AbstractTest {
     public void test01GivenWorkEnvironmentWhenUpdateExistingCommentThenCheck() {
         restSender.getResponseByPut("posts", sets.getPutDataUser());
 
-        assertEquals(restSender.statusCode, 500);
+        assertThat(restSender.statusCode, is(500));
         LOGGER.info("Negative test. Action for update existing comment is Fail. Test complete.");
     }
 
