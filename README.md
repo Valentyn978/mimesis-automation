@@ -17,6 +17,5 @@ Frameworks facilitating the hard life of an Q&amp;A engineers
 
 <H3>What's planned:</H3>
 <ol type=1>Create ability for:
-<li>Working with DB</li>
 <li>Reporting for performing testing</li>
 </ol>
