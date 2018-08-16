@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Open Weather Map">
-    <test name="WD Test Class">
+    <test name="WD Test REST'api">
+        <parameter name="HostUrl" value="https://api.openweathermap.org"/>
+        <parameter name="browserType" value="CHROME"/>
+        <parameter name="dataSet" value="firstDataSet"/>
         <classes>
-            <class name="com.tests.wd.OpenWeatherMapTest"/>
+            <class name="com.tests.wd.TestOpenWeatherMap"/>
+        </classes>
+    </test>
+    <test name="WD Test Selenium part">
+        <parameter name="browserType" value="CHROME"/>
+        <parameter name="dataSet" value="firstDataSet"/>
+        <classes>
+            <class name="com.tests.wd.TestNationalWeather"/>
         </classes>
     </test>
 </suite>

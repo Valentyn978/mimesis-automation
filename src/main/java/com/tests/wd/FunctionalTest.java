@@ -1,30 +1,25 @@
 package com.tests.wd;
 
-import com.jayway.restassured.RestAssured;
-import org.testng.annotations.BeforeSuite;
+import com.configuration.AutomationMainModule;
+import com.configuration.reporting.GivenWhenThenTestListener;
+import com.configuration.reporting.TestHtmlReporter;
+import com.configuration.reporting.TestListener;
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 
-public class FunctionalTest {
+@Listeners({TestListener.class, TestHtmlReporter.class, GivenWhenThenTestListener.class})
+abstract class FunctionalTest {
 
-    @BeforeSuite
-    public static void setup() {
-        String port = System.getProperty("server.port");
-        if (port == null) {
-            RestAssured.port = Integer.valueOf(8080);
-        } else {
-            RestAssured.port = Integer.valueOf(port);
-        }
+    @Inject
+    public Injector injector;
 
-        String basePath = System.getProperty("server.base");
-        if (basePath == null) {
-            basePath = "/current/";
-        }
-        RestAssured.basePath = basePath;
-
-        String baseHost = System.getProperty("server.host");
-        if (baseHost == null) {
-            baseHost = "https://openweathermap.org";
-        }
-
-        RestAssured.baseURI = baseHost;
+    @BeforeTest
+    public void setup(ITestContext context) {
+        injector = Guice.createInjector(new AutomationMainModule(context));
+        injector.injectMembers(this);
     }
 }

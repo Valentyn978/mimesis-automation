@@ -7,13 +7,9 @@ import com.data.sets.DataSetFirst;
 import com.data.sets.DataSetSecond;
 import com.data.sets.DataSets;
 import com.google.inject.AbstractModule;
-import com.google.inject.Injector;
-import com.google.inject.Module;
-import org.testng.*;
-import org.testng.xml.XmlSuite;
-import org.testng.xml.XmlTest;
-
-import java.util.*;
+import com.helpers.RestAssuredClient;
+import org.testng.ITestContext;
+import org.testng.TestNGException;
 
 public class AutomationMainModule extends AbstractModule {
 
@@ -26,8 +22,11 @@ public class AutomationMainModule extends AbstractModule {
     @Override
     protected void configure() {
         String dataSet = null;
+        String hostUrl = null;
         try {
             dataSet = testContext.getCurrentXmlTest().getParameter("dataSet");
+            hostUrl = testContext.getCurrentXmlTest().getParameter("HostUrl");
+            bind(RestAssuredClient.class).toInstance(new RestAssuredClient(hostUrl));
         } catch (TestNGException ignore){}
         if (null != dataSet) {
             switch (dataSet){
