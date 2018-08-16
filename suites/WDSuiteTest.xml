@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Open Weather Map">
+    <test name="WD Test Class">
+        <classes>
+            <class name="com.tests.wd.OpenWeatherMapTest"/>
+        </classes>
+    </test>
+</suite>
