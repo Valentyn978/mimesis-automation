@@ -22,7 +22,7 @@ import org.testng.annotations.Listeners;
 
 
 @Listeners({TestListener.class, TestHtmlReporter.class, GivenWhenThenTestListener.class})
-public class AbstractTest {
+public abstract class AbstractTest {
 
     public RestSender restSender;
 

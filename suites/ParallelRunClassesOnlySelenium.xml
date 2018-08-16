@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Check users data. Get actions" parallel="classes" thread-count="2">
+<suite name="Selenium parallel check" verbose="2" parallel="tests" thread-count="4">
     <test name="Test parallel. Test. Main selenium. Chrome.">
         <parameter name="browserType" value="CHROME" />
         <classes>
             <class name="com.tests.selenium.TestDefaultSelenium"/>
         </classes>
-    </test><test name="Test parallel. Test. Main selenium. FireFox">
+    </test>
+    <test name="Test parallel. Test. Main selenium. FireFox">
         <parameter name="browserType" value="FF" />
         <classes>
             <class name="com.tests.selenium.TestDefaultSelenium"/>
