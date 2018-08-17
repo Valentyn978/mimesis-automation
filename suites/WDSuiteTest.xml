@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Open Weather Map">
-    <test name="WD Test REST'api">
-        <parameter name="HostUrl" value="https://api.openweathermap.org"/>
-        <parameter name="browserType" value="CHROME"/>
-        <parameter name="dataSet" value="firstDataSet"/>
-        <classes>
-            <class name="com.tests.wd.TestOpenWeatherMap"/>
-        </classes>
-    </test>
+<suite name="Open Weather Map" thread-count="1">
     <test name="WD Test Selenium part">
         <parameter name="browserType" value="CHROME"/>
-        <parameter name="dataSet" value="firstDataSet"/>
+        <!--<parameter name="browserType" value="FF"/>-->
+        <!--<parameter name="HttpClient" value="closable"/>-->
+        <parameter name="HttpClient" value="assured"/>
         <classes>
             <class name="com.tests.wd.TestNationalWeather"/>
+        </classes>
+    </test>
+    <test name="WD Test REST'api">
+        <!--<groups>-->
+        <!--<run>-->
+        <!--<include name="regression" />-->
+        <!--<include name="smoke" />-->
+        <!--<exclude name="negative" />-->
+        <!--</run>-->
+        <!--</groups>-->
+        <parameter name="browserType" value="CHROME"/>
+        <!--<parameter name="browserType" value="FF"/>-->
+        <!--<parameter name="HttpClient" value="closable"/>-->
+        <parameter name="HttpClient" value="assured"/>
+        <classes>
+            <class name="com.tests.wd.TestCompareValueFromApi"/>
         </classes>
     </test>
 </suite>

@@ -9,6 +9,7 @@ import com.helpers.PropertiesLoader;
 public class NationalWeatherPage implements OpenedInterface {
 
     public static final String PAGE_FLAG = "//span[.='Today']";
+    public static final String TEMP_LABEL = "//div[@class='today_nowcard-temp']/span";
 
     @Inject
     private PropertiesLoader propertiesLoader;
@@ -24,6 +25,10 @@ public class NationalWeatherPage implements OpenedInterface {
     public boolean isOpen() {
         pageDriver.takeScreenShot();
         return pageDriver.isPresentByXpath(PAGE_FLAG);
+    }
+
+    public String getTempToDay() {
+        return pageDriver.getTextFromObject(TEMP_LABEL);
     }
 
 }

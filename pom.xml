@@ -40,28 +40,6 @@
 			<version>${selenium.version}</version>
 		</dependency>
 
-		<!-- Allure -->
-		<dependency>
-			<groupId>io.qameta.allure</groupId>
-			<artifactId>allure-testng</artifactId>
-			<version>2.0-BETA21</version>
-		</dependency>
-		<dependency>
-			<groupId>ru.yandex.qatools.allure</groupId>
-			<artifactId>allure-report-data</artifactId>
-			<version>${allure.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ru.yandex.qatools.allure</groupId>
-			<artifactId>allure-commons</artifactId>
-			<version>${allure.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ru.yandex.qatools.allure</groupId>
-			<artifactId>allure-testng-adaptor</artifactId>
-			<version>${allure.version}</version>
-		</dependency>
-
 		<!-- google -->
 		<dependency>
 			<groupId>com.google.inject</groupId>
@@ -74,6 +52,23 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.2</version>
+		</dependency>
+
+		<!-- REST Assured -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.restassured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>2.9.0</version>
 		</dependency>
 
 		<!-- JSON -->
@@ -130,23 +125,6 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.7.21</version>
-		</dependency>
-
-		<!-- REST Assured -->
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
-			<version>1.3</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.6.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.jayway.restassured</groupId>
-			<artifactId>rest-assured</artifactId>
-			<version>2.9.0</version>
 		</dependency>
 
 		<!-- COMMONS -->
@@ -221,31 +199,40 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.20.1</version>
-				<configuration>
-					<suiteXmlFiles>
-						<suiteXmlFile>src/test/java/suites/SuiteJunit.xml</suiteXmlFile>
-					</suiteXmlFiles>
-					<testFailureIgnore>false</testFailureIgnore>
-					<argLine>
-						-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-					</argLine>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.aspectj</groupId>
-						<artifactId>aspectjweaver</artifactId>
-						<version>${aspectj.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>versions-maven-plugin</artifactId>
-				<version>2.0</version>
-				<!--versions:display-dependency-updates-->
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>copy-resources-phase1</id>
+						<phase>install</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/run</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/target</directory>
+									<includes>
+										<include>*-with-dependencies.jar</include>
+									</includes>
+									<filtering>false</filtering>
+								</resource>
+								<resource>
+									<directory>${basedir}</directory>
+									<includes>
+										<include>*.properties</include>
+									</includes>
+									<filtering>false</filtering>
+								</resource>
+								<resource>
+									<directory>${basedir}/suites</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

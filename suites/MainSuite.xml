@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<suite name="Main Suite Run">
-    <suite-files>
-        <suite-file path="GetActions.xml"/>
-        <suite-file path="PostActions.xml"/>
-        <suite-file path="PutActions.xml"/>
-    </suite-files>
-</suite>

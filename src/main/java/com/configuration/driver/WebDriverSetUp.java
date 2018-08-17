@@ -2,8 +2,6 @@ package com.configuration.driver;
 
 import com.configuration.reporting.DotTestListener;
 import com.helpers.PropertiesLoader;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -39,13 +37,12 @@ public class WebDriverSetUp {
 
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(pr.getProperty("TimeWAIT")), TimeUnit.MILLISECONDS);
         driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(pr.getProperty("TimeOut")), TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(1024, 900));
-        driver.manage().window().setPosition(new Point(60, 1));
         driver.manage().deleteAllCookies();
     }
 
     public void quiteDriver() {
         if (driver != null) {
+            driver.close();
             driver.quit();
         }
     }

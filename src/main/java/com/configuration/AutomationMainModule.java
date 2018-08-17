@@ -3,13 +3,14 @@ package com.configuration;
 import com.configuration.driver.PageDriver;
 import com.configuration.driver.PageDriverImpl;
 import com.configuration.driver.WebDriverSetUp;
-import com.data.sets.DataSetFirst;
-import com.data.sets.DataSetSecond;
-import com.data.sets.DataSets;
+import com.data.sets.RestAssuredClient;
+import com.data.sets.RestClientSelector;
+import com.data.sets.RestClosableClient;
 import com.google.inject.AbstractModule;
-import com.helpers.RestAssuredClient;
 import org.testng.ITestContext;
 import org.testng.TestNGException;
+
+import java.util.Objects;
 
 public class AutomationMainModule extends AbstractModule {
 
@@ -21,23 +22,17 @@ public class AutomationMainModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        String dataSet = null;
-        String hostUrl = null;
+        String httpClientType = null;
         try {
-            dataSet = testContext.getCurrentXmlTest().getParameter("dataSet");
-            hostUrl = testContext.getCurrentXmlTest().getParameter("HostUrl");
-            bind(RestAssuredClient.class).toInstance(new RestAssuredClient(hostUrl));
+            httpClientType = testContext.getCurrentXmlTest().getParameter("HttpClient");
         } catch (TestNGException ignore){}
-        if (null != dataSet) {
-            switch (dataSet){
-                case "firstDataSet":
-                    bind(DataSets.class).toInstance(new DataSetFirst());
-                    break;
-                case "secondDataSet":
-                    bind(DataSets.class).toInstance(new DataSetSecond());
-            }
-        } else {
-            bind(DataSets.class).toInstance(new DataSetFirst());
+        switch (Objects.requireNonNull(httpClientType)) {
+            case "closable":
+                bind(RestClientSelector.class).toInstance(new RestClosableClient("URL_API"));
+                break;
+            case "assured":
+                bind(RestClientSelector.class).toInstance(new RestAssuredClient());
+                break;
         }
         bind(PageDriver.class).toInstance(new PageDriverImpl(new WebDriverSetUp().getDriver(testContext)));
     }

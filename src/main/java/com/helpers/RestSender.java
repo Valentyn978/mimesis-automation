@@ -14,10 +14,11 @@ import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.codehaus.jettison.json.JSONException;
 import org.testng.TestNGException;
+
 import java.io.*;
 import java.net.URLDecoder;
 
-import static com.tests.AbstractTest.closeableClient;
+import static com.data.sets.RestClosableClient.closeableClient;
 import static java.text.MessageFormat.format;
 
 
