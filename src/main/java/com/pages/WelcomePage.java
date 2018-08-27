@@ -1,10 +1,9 @@
 package com.pages;
 
 
+import com.configuration.MimesisConfig;
 import com.configuration.driver.PageDriver;
-import com.configuration.driver.PageDriverImpl;
 import com.google.inject.Inject;
-import com.helpers.PropertiesLoader;
 
 
 public class WelcomePage implements OpenedInterface {
@@ -14,13 +13,13 @@ public class WelcomePage implements OpenedInterface {
     public static final String SOURCE_AREA = "//*[@id='source']";
 
     @Inject
-    private PropertiesLoader propertiesLoader;
+    private MimesisConfig propertiesLoader;
     @Inject
     private PageDriver pageDriver;
 
     @Override
     public void open() {
-        pageDriver.get(propertiesLoader.getProperty("MAIN_URL_SELENIUM"));
+        pageDriver.get(propertiesLoader.mainUrlSelenium());
     }
 
     @Override

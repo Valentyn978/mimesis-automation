@@ -20,9 +20,9 @@ import org.testng.annotations.*;
 
 
 @Listeners({TestListener.class, TestHtmlReporter.class, GivenWhenThenTestListener.class})
-public class AbstractTest {
+public abstract class AbstractTest {
 
-    public RestSender restSender = new RestSender("MAIN_URL");
+    public RestSender restSender = new RestSender();
 
     @Inject
     public Injector injector;

@@ -1,21 +1,21 @@
 package com.pages;
 
 
+import com.configuration.MimesisConfig;
 import com.configuration.driver.PageDriver;
 import com.google.inject.Inject;
-import com.helpers.PropertiesLoader;
 
 
 public class JsonPlaceholder implements OpenedInterface {
 
     @Inject
-    private PropertiesLoader propertiesLoader;
+    private MimesisConfig propertiesLoader;
     @Inject
     private PageDriver pageDriver;
 
     @Override
     public void open() {
-        pageDriver.get(propertiesLoader.getProperty("MAIN_URL"));
+        pageDriver.get(propertiesLoader.mainUrl());
     }
 
     @Override

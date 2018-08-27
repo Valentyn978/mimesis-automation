@@ -1,6 +1,8 @@
 package com.helpers;
 
+import com.configuration.MimesisConfig;
 import com.configuration.reporting.TestLogger;
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -14,6 +16,7 @@ import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.codehaus.jettison.json.JSONException;
 import org.testng.TestNGException;
+
 import java.io.*;
 import java.net.URLDecoder;
 
@@ -34,8 +37,9 @@ public class RestSender {
 
     protected RequestHeaders setHeaders = new RequestHeaders();
 
-    public RestSender(String urlName) {
-        this.url = new PropertiesLoader().getProperty(urlName);
+    public RestSender() {
+        MimesisConfig pr = ConfigFactory.create(MimesisConfig.class);
+        this.url = pr.mainUrl();
     }
 
     public CloseableHttpClient setUpHttpClient() {

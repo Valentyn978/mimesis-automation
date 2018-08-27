@@ -1,7 +1,8 @@
 package com.configuration.driver;
 
+import com.configuration.MimesisConfig;
 import com.configuration.reporting.DotTestListener;
-import com.helpers.PropertiesLoader;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,11 @@ import java.util.concurrent.TimeUnit;
 public class WebDriverSetUp {
 
     private WebDriver driver;
-    private PropertiesLoader pr = new PropertiesLoader();
+    private MimesisConfig pr;
+
+    public WebDriverSetUp() {
+        pr = ConfigFactory.create(MimesisConfig.class);
+    }
 
     public WebDriver getDriver(ITestContext context) {
         setUp(context);
@@ -25,11 +30,11 @@ public class WebDriverSetUp {
 
         switch (context.getCurrentXmlTest().getParameter("browserType")) {
             case "FF":
-                System.setProperty("webdriver.gecko.driver", pr.getProperty("GekoDrPath"));
+                System.setProperty("webdriver.gecko.driver", pr.gekoDrPath());
                 driver = new FirefoxDriver();
                 break;
             case "CHROME":
-                System.setProperty("webdriver.chrome.driver", pr.getProperty("ChromeDriverPath"));
+                System.setProperty("webdriver.chrome.driver", pr.chromeDriverPath());
                 driver = new ChromeDriver();
                 break;
             default:
@@ -37,8 +42,8 @@ public class WebDriverSetUp {
                 DotTestListener.log("Type of browser not valid!");
         }
 
-        driver.manage().timeouts().implicitlyWait(Integer.parseInt(pr.getProperty("TimeWAIT")), TimeUnit.MILLISECONDS);
-        driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(pr.getProperty("TimeOut")), TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(pr.timeWAIT(), TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().pageLoadTimeout(pr.timeOut(), TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1024, 900));
         driver.manage().window().setPosition(new Point(60, 1));
         driver.manage().deleteAllCookies();
