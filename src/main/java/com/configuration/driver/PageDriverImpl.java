@@ -1,10 +1,11 @@
 package com.configuration.driver;
 
+import com.configuration.MimesisConfig;
 import com.configuration.reporting.DotTestListener;
 import com.configuration.reporting.TestHtmlReporter;
 import com.configuration.reporting.TestListener;
-import com.helpers.PropertiesLoader;
 import com.helpers.WaitUtils;
+import org.aeonbits.owner.ConfigFactory;
 import org.joda.time.DateTime;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -21,12 +22,12 @@ import java.util.Set;
 public class PageDriverImpl implements PageDriver {
 
     private static final File defaultScreenShotsFolder;
-    public static PropertiesLoader PL = new PropertiesLoader();
 
     static {
-        defaultScreenShotsFolder = new File(PL.getProperty("testResultFolder") + File.separator + "images");
+        MimesisConfig PL = ConfigFactory.create(MimesisConfig.class);
+        defaultScreenShotsFolder = new File(PL.testResultFolder() + File.separator + "images");
         System.setProperty(TestHtmlReporter.PATH_TO_SCREEN_SHOTS, defaultScreenShotsFolder.getPath());
-        System.setProperty(TestListener.CURRENT_TEST_REPORT_DIR, PL.getProperty("testResultFolder"));
+        System.setProperty(TestListener.CURRENT_TEST_REPORT_DIR, PL.testResultFolder());
     }
 
     private final WebDriver webDriver;

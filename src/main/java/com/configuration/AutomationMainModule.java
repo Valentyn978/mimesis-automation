@@ -7,13 +7,9 @@ import com.data.sets.DataSetFirst;
 import com.data.sets.DataSetSecond;
 import com.data.sets.DataSets;
 import com.google.inject.AbstractModule;
-import com.google.inject.Injector;
-import com.google.inject.Module;
-import org.testng.*;
-import org.testng.xml.XmlSuite;
-import org.testng.xml.XmlTest;
-
-import java.util.*;
+import org.aeonbits.owner.ConfigFactory;
+import org.testng.ITestContext;
+import org.testng.TestNGException;
 
 public class AutomationMainModule extends AbstractModule {
 
@@ -28,6 +24,7 @@ public class AutomationMainModule extends AbstractModule {
         String dataSet = null;
         try {
             dataSet = testContext.getCurrentXmlTest().getParameter("dataSet");
+            bind(MimesisConfig.class).toInstance(ConfigFactory.create(MimesisConfig.class));
         } catch (TestNGException ignore){}
         if (null != dataSet) {
             switch (dataSet){

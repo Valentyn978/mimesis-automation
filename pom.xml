@@ -167,6 +167,13 @@
 			<artifactId>joda-time</artifactId>
 			<version>2.2</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.aeonbits.owner/owner -->
+		<dependency>
+			<groupId>org.aeonbits.owner</groupId>
+			<artifactId>owner-java8</artifactId>
+			<version>1.0.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -202,27 +209,6 @@
 						</manifest>
 					</archive>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.20.1</version>
-				<configuration>
-					<suiteXmlFiles>
-						<suiteXmlFile>src/test/java/suites/SuiteJunit.xml</suiteXmlFile>
-					</suiteXmlFiles>
-					<testFailureIgnore>false</testFailureIgnore>
-					<argLine>
-						-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-					</argLine>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.aspectj</groupId>
-						<artifactId>aspectjweaver</artifactId>
-						<version>${aspectj.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

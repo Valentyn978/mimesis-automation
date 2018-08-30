@@ -2,7 +2,6 @@ package com.configuration.reporting;
 
 import com.google.inject.Injector;
 import com.google.inject.Module;
-import com.helpers.PropertiesLoader;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.testng.*;
@@ -10,7 +9,9 @@ import org.testng.internal.ResultMap;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 import org.uncommons.reportng.HTMLReporter;
-import java.io.*;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class TestHtmlReporter extends HTMLReporter {
