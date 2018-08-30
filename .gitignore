@@ -3,4 +3,4 @@ target/
 .idea/
 *.iml
 *.iws
-base.properties
+*.properties
