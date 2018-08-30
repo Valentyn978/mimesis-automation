@@ -9,5 +9,6 @@ TimeOut = 1400
 TimeWAIT = 120
 #######################################
 
-MAIN_URL=https://jsonplaceholder.typicode.com/
-MAIN_URL_SELENIUM=https://translate.google.com/#en
+URL_API=https://api.openweathermap.org
+API_ID=f31cce7ac5a1983cd83db0da00b2e0e1
+URL_WEATHER_SELENIUM=https://weather.com/weather/today/l/UKXX0085:1:UK

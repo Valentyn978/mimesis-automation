@@ -31,4 +31,16 @@ public interface MimesisConfig extends Config {
     @Key("MAIN_URL_SELENIUM")
     @DefaultValue("https://translate.google.com/#en")
     String mainUrlSelenium();
+
+    @Key("API_ID")
+    @DefaultValue("f31cce7ac5a1983cd83db0da00b2e0e1")
+    String apiId();
+
+    @Key("URL_API")
+    @DefaultValue("https://api.openweathermap.org")
+    String urlApi();
+
+    @Key("URL_WEATHER_SELENIUM")
+    @DefaultValue("https://weather.com/weather/today/l/UKXX0085:1:UK")
+    String urlWeatherSelenium();
 }

@@ -1,7 +1,7 @@
 package com.tests.selenium;
 
 import com.configuration.reporting.DotTestListener;
-import com.data.sets.DataSets;
+import com.data.DataSets;
 import com.google.inject.Inject;
 import com.pages.WelcomePage;
 import com.tests.AbstractTest;

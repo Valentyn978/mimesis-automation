@@ -1,4 +1,4 @@
-package com.data.sets;
+package com.data;
 
 public interface DataSets {
     String getUserName();

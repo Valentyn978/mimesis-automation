@@ -1,7 +1,7 @@
 package com.tests;
 
 import com.configuration.reporting.TestLogger;
-import com.data.sets.DataSets;
+import com.data.DataSets;
 import com.google.inject.Inject;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;

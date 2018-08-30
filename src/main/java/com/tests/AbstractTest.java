@@ -2,6 +2,7 @@ package com.tests;
 
 
 import com.configuration.AutomationMainModule;
+import com.configuration.MimesisConfig;
 import com.configuration.driver.PageDriver;
 import com.configuration.reporting.GivenWhenThenTestListener;
 import com.configuration.reporting.TestHtmlReporter;
@@ -12,6 +13,7 @@ import com.google.inject.Injector;
 import com.helpers.RestSender;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
@@ -22,7 +24,8 @@ import org.testng.annotations.*;
 @Listeners({TestListener.class, TestHtmlReporter.class, GivenWhenThenTestListener.class})
 public abstract class AbstractTest {
 
-    public RestSender restSender = new RestSender();
+    MimesisConfig config = ConfigFactory.create(MimesisConfig.class);
+    public RestSender restSender = new RestSender(config.mainUrl());
 
     @Inject
     public Injector injector;

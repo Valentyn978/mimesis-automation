@@ -1,5 +1,6 @@
 package com.data.sets;
 
+import com.data.DataSets;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class DataSetSecond implements DataSets

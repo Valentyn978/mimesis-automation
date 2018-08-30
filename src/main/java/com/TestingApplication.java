@@ -14,7 +14,6 @@ public class TestingApplication {
 		}
 
 		List<String> suite = Arrays.asList(args[0]);
-//		testNG.setMethodInterceptor(new AllureLoggingInterceptor());
 		testNG.setTestSuites(suite);
 		testNG.run();
 	}
