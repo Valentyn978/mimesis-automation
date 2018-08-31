@@ -1,7 +1,7 @@
 package com.tests.wd;
 
 import com.configuration.AutomationMainModule;
-import com.configuration.driver.WebDriverSetUp;
+import com.configuration.driver.PageDriver;
 import com.configuration.reporting.GivenWhenThenTestListener;
 import com.configuration.reporting.TestHtmlReporter;
 import com.configuration.reporting.TestListener;
@@ -9,7 +9,7 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 
@@ -18,8 +18,6 @@ abstract class FunctionalTest {
 
     @Inject
     public Injector injector;
-    @Inject
-    protected WebDriverSetUp webDriverSetUp;
 
     @BeforeTest
     public void setup(ITestContext context) {
@@ -27,8 +25,12 @@ abstract class FunctionalTest {
         injector.injectMembers(this);
     }
 
-    @AfterSuite
+    @AfterTest
     public void queitWebDriver() {
-        webDriverSetUp.quiteDriver();
+        try {
+            if (null != injector)
+                injector.getInstance(PageDriver.class).quit();
+        } catch (NullPointerException ignore) {
+        }
     }
 }

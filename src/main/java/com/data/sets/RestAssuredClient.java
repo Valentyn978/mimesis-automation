@@ -1,11 +1,11 @@
 package com.data.sets;
 
 import com.configuration.MimesisConfig;
-import com.data.RestClientSelector;
+import com.data.RestClients;
 import com.jayway.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 
-public class RestAssuredClient implements RestClientSelector {
+public class RestAssuredClient implements RestClients {
 
     public RestAssuredClient() {
         new RestAssuredClientStart();

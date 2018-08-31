@@ -21,7 +21,7 @@ public class TestPostActions extends AbstractTest {
     public void test01GivenWorkEnvironmentWhenCreateNewCommentThenCheck() {
         restSender.getResponseByPost("posts", sets.getPostDataUser());
 
-        assertEquals(restSender.statusCode, 400);
+        assertEquals(restSender.statusCode, 500);
         LOGGER.info("Negative test. Action for create new comment is Fail. Test complete.");
     }
 }

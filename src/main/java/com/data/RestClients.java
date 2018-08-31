@@ -4,7 +4,7 @@ package com.data;
 import com.configuration.MimesisConfig;
 import org.aeonbits.owner.ConfigFactory;
 
-public interface RestClientSelector {
+public interface RestClients {
     String JSON_PATH = "main.temp";
 
     String getResultByCityName(String name);

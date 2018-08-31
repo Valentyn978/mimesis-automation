@@ -15,14 +15,6 @@ public interface PageDriver extends WebDriver {
 
     public void clickObjectByXPath(String xPath);
 
-    /**
-     * Running action for emulation 'click' selenium action.
-     * This is needed when standard method 'click' does not working.
-     *
-     * @param xPath
-     */
-    public void clickObjectByXPathUsingAction(String xPath);
-
     public void fillValue(String xPath, String value);
 
     public void fillValueByIndex(String xPath, String value, int index);
@@ -78,11 +70,7 @@ public interface PageDriver extends WebDriver {
 
     public void createMoveAction(String xPath);
 
-    public void createMoveActionTab(String xPath);
-
     public void createMoveAction(WebElement e);
-
-    public void catchProgressBarByXpath(String xPath);
 
     public void runJavaScript(String js);
 

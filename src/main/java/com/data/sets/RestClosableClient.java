@@ -1,15 +1,13 @@
 package com.data.sets;
 
 import com.configuration.MimesisConfig;
-import com.data.RestClientSelector;
+import com.data.RestClients;
 import com.helpers.RestSender;
 import com.jayway.jsonpath.JsonPath;
 import org.aeonbits.owner.ConfigFactory;
-import org.apache.http.impl.client.CloseableHttpClient;
 
-public class RestClosableClient implements RestClientSelector {
+public class RestClosableClient implements RestClients {
 
-    public static CloseableHttpClient closeableClient;
     private MimesisConfig config = ConfigFactory.create(MimesisConfig.class);
 
 

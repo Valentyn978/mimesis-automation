@@ -4,7 +4,7 @@ import com.configuration.driver.PageDriver;
 import com.configuration.driver.PageDriverImpl;
 import com.configuration.driver.WebDriverSetUp;
 import com.data.DataSets;
-import com.data.RestClientSelector;
+import com.data.RestClients;
 import com.data.sets.DataSetFirst;
 import com.data.sets.DataSetSecond;
 import com.data.sets.RestAssuredClient;
@@ -34,14 +34,14 @@ public class AutomationMainModule extends AbstractModule {
         if (null != httpClientType) {
             switch (httpClientType) {
                 case "closable":
-                    bind(RestClientSelector.class).toInstance(new RestClosableClient());
+                    bind(RestClients.class).toInstance(new RestClosableClient());
                     break;
                 case "assured":
-                    bind(RestClientSelector.class).toInstance(new RestAssuredClient());
+                    bind(RestClients.class).toInstance(new RestAssuredClient());
                     break;
             }
         } else {
-            bind(RestClientSelector.class).toInstance(new RestClosableClient());
+            bind(RestClients.class).toInstance(new RestClosableClient());
         }
         if (null != dataSet) {
             switch (dataSet){

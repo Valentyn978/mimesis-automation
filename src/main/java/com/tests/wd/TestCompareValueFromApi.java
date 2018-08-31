@@ -2,7 +2,7 @@ package com.tests.wd;
 
 
 import com.configuration.reporting.TestLogger;
-import com.data.RestClientSelector;
+import com.data.RestClients;
 import com.google.inject.Inject;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -16,7 +16,7 @@ public class TestCompareValueFromApi extends FunctionalTest {
     private String result = null;
 
     @Inject
-    RestClientSelector restClient;
+    RestClients restClient;
 
 
     @Test(description = "Get temperature for London", groups = {"smoke", "regression"})

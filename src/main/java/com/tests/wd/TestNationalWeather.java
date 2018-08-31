@@ -16,7 +16,7 @@ public class TestNationalWeather extends FunctionalTest {
     private NationalWeatherPage weatherPage;
 
     @Test(description = "Getting data from another source for compare", groups = {"smoke", "regression"})
-    public void test01GivenOpenedPageWhenGetDataWhenCompare() {
+    public void test01GivenOpenedPageWhenGetDataThenCompare() {
         weatherPage.open();
         assertTrue(weatherPage.isOpen(), "Page does not opened");
 

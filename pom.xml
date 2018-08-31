@@ -232,6 +232,18 @@
 									</includes>
 									<filtering>false</filtering>
 								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-resources-phase2</id>
+						<phase>install</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/run/suites</outputDirectory>
+							<resources>
 								<resource>
 									<directory>${basedir}/suites</directory>
 									<filtering>false</filtering>

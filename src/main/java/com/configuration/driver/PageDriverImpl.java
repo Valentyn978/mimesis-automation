@@ -11,13 +11,16 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.Reporter;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public class PageDriverImpl implements PageDriver {
 
@@ -142,7 +145,7 @@ public class PageDriverImpl implements PageDriver {
         Actions dbAction = new Actions(webDriver);
         dbAction.doubleClick(e).build().perform();
         WaitUtils.waitForMilliseconds();
-        DotTestListener.logOnly("\"" + xPath + "\" displayed and was used.");
+        DotTestListener.logOnly(String.format("\"%s\" displayed and was used.", xPath));
     }
 
     public boolean isPresentByXpath(String xPath) {
@@ -151,9 +154,9 @@ public class PageDriverImpl implements PageDriver {
 
     public boolean isPresentByXpath(String xPath, boolean silent) {
         try {
-            boolean displayed = findElement(By.xpath(xPath)).isDisplayed();
-            if (!silent) DotTestListener.logOnly(displayed + ".xPath." + xPath);
-            return displayed;
+            Predicate<String> p = x -> findElement(By.xpath(x)).isDisplayed();
+            if (!silent) DotTestListener.logOnly(String.format("%s.xPath.%s", p.test(xPath), xPath));
+            return p.test(xPath);
         } catch (WebDriverException e) {
             if (!silent) DotTestListener.logOnly("false.xPath." + xPath);
             return false;
@@ -162,9 +165,9 @@ public class PageDriverImpl implements PageDriver {
 
     public boolean isPlacedByXpath(String xPath) {
         try {
-            boolean displayed = findElement(By.xpath(xPath)).isEnabled();
-            DotTestListener.logOnly(displayed + ".xPath." + xPath);
-            return displayed;
+            Predicate<String> p = x -> findElement(By.xpath(x)).isEnabled();
+            DotTestListener.logOnly(String.format("%s.xPath.%s", p.test(xPath), xPath));
+            return p.test(xPath);
         } catch (WebDriverException e) {
             DotTestListener.logOnly("false.xPath." + xPath);
             return false;
@@ -240,17 +243,25 @@ public class PageDriverImpl implements PageDriver {
         if (scrByte != null) {
             try {
                 outputStream = new FileOutputStream(defaultScreenShotsFolder + File.separator + nameFile);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            try {
                 outputStream.write(scrByte);
-                DotTestListener.log("Screen Shot is created: " + nameFile);
-                String pathToScreenShot = "images" + File.separator + nameFile;
-                Reporter.log("<a href=\"" + pathToScreenShot + "\"> <img width=\"220\" height=\"160\" border=\"1\" src=\"" + pathToScreenShot + "\" alt=\"Screen Shot\"/></a><br />");
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException ignore) {
+            } finally {
+                try {
+                    outputStream.close();
+                } catch (IOException | NullPointerException ignore) {
+                }
             }
+            DotTestListener.log("Screen Shot is created: " + nameFile);
+
+            Reporter.log("<a href=\"" +
+                    "images" +
+                    File.separator +
+                    nameFile +
+                    "\"> <img width=\"220\" height=\"160\" border=\"1\" src=\"" +
+                    "images" +
+                    File.separator +
+                    nameFile +
+                    "\" alt=\"Screen Shot\"/></a><br />");
         }
     }
 
@@ -349,46 +360,11 @@ public class PageDriverImpl implements PageDriver {
         }
     }
 
-    // Simulate Move Mouse action to object and press Tab button
-    public void createMoveActionTab(String xPath) {
-        String mainWindowHandle1 = webDriver.getWindowHandle();
-        webDriver.switchTo().window(mainWindowHandle1);
-        if (isPresentByXpath(xPath)) {
-            WebElement cb = webDriver.findElement(By.xpath(xPath));
-            Actions builder = new Actions(webDriver);
-            builder.moveToElement(cb, 10, 10).moveByOffset(10, 10).sendKeys(Keys.SPACE).release();
-            WaitUtils.waitForMilliseconds();
-            builder.build().perform();
-        }
-    }
-
     public void createMoveAction(WebElement e) {
         Actions builder = new Actions(webDriver);
         builder.moveToElement(e, 10, 10).moveByOffset(10, 10).release();
         WaitUtils.waitForOneSecond();
         builder.build().perform();
-    }
-
-    public void clickObjectByXPathUsingAction(String xPath) {
-        WaitUtils.waitForOneSecond();
-        WebElement cb = webDriver.findElement(By.xpath(xPath));
-        Actions builder = new Actions(webDriver);
-        builder.moveToElement(cb, 3, 3).click(cb).release();
-        WaitUtils.waitForOneSecond();
-        builder.build().perform();
-    }
-
-    public void catchProgressBarByXpath(String xPath) {
-        int countTry = 0;
-        while (isPresentByXpath(xPath)) {
-            WaitUtils.waitForMilliseconds();
-            countTry++;
-            DotTestListener.logOnly("Loading Indicator GRID is catching: " + countTry);
-            if (countTry == 300) {
-                DotTestListener.log("###################### STOP (Load) ######################");
-                Assert.fail("Server is not respond or exceeded time is expectation, the test is stopped!");
-            }
-        }
     }
 
     @Override

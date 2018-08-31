@@ -18,15 +18,17 @@ import org.testng.TestNGException;
 import java.io.*;
 import java.net.URLDecoder;
 
-import static com.data.sets.RestClosableClient.closeableClient;
 import static java.text.MessageFormat.format;
 
 
 public class RestSender {
 
-    public static String headerName = "Accept";
-    public static String headerData = "text/html";
     public int statusCode;
+
+    static String headerName = "Accept";
+    static String headerData = "text/html";
+
+    private static CloseableHttpClient closeableClient;
     private static final Logger LOGGER = TestLogger.getLogger(RestSender.class);
     private String url;
     private String fullUrl;
@@ -37,6 +39,7 @@ public class RestSender {
 
     public RestSender(String url) {
         this.url = url;
+        closeableClient = setUpHttpClient();
     }
 
     public CloseableHttpClient setUpHttpClient() {

@@ -14,28 +14,22 @@ import com.helpers.RestSender;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
 import org.aeonbits.owner.ConfigFactory;
-import org.apache.http.impl.client.CloseableHttpClient;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.testng.ITestContext;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 
 
 @Listeners({TestListener.class, TestHtmlReporter.class, GivenWhenThenTestListener.class})
 public abstract class AbstractTest {
 
-    MimesisConfig config = ConfigFactory.create(MimesisConfig.class);
-    public RestSender restSender = new RestSender(config.mainUrl());
+    RestSender restSender = new RestSender(ConfigFactory.create(MimesisConfig.class).mainUrl());
 
     @Inject
     public Injector injector;
-
-    public static CloseableHttpClient closeableClient;
-
-    @BeforeSuite
-    public void setUpSuite(ITestContext context) {
-        closeableClient = restSender.setUpHttpClient();
-    }
 
     @AfterSuite
     public void tearDownSuite() {
@@ -50,8 +44,11 @@ public abstract class AbstractTest {
 
     @AfterTest
     public void tearDownAfterTest() {
-        if (null != injector)
-            injector.getInstance(PageDriver.class).quit();
+        try {
+            if (null != injector)
+                injector.getInstance(PageDriver.class).quit();
+        } catch (NullPointerException ignore) {
+        }
     }
 
     public String getJsonPathValue(String responseContent, String jsonPath) {

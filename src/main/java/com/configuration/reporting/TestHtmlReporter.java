@@ -258,10 +258,8 @@ public class TestHtmlReporter extends HTMLReporter {
     }
 
     private void copyResultMap(IResultMap source, IResultMap target) {
-        for (ITestNGMethod method : source.getAllMethods()) {
-            for (ITestResult result : source.getResults(method)) {
-                target.addResult(result, method);
-            }
-        }
+        source.getAllMethods().forEach(method ->
+                source.getResults(method).forEach(result -> target.addResult(result, method))
+        );
     }
 }

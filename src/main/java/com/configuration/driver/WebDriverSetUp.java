@@ -26,31 +26,26 @@ public class WebDriverSetUp {
 
     private void setUp(ITestContext context) {
 
-        switch (context.getCurrentXmlTest().getParameter("browserType")) {
-            case "FF":
-                System.setProperty("webdriver.gecko.driver", pr.gekoDrPath());
-                driver = new FirefoxDriver();
-                break;
-            case "CHROME":
-                System.setProperty("webdriver.chrome.driver", pr.chromeDriverPath());
-                driver = new ChromeDriver();
-                break;
-            default:
-                driver = null;
-                DotTestListener.log("Type of browser not valid!");
-        }
+        if (null != context.getCurrentXmlTest().getParameter("browserType")) {
+            switch (context.getCurrentXmlTest().getParameter("browserType")) {
+                case "FF":
+                    System.setProperty("webdriver.gecko.driver", pr.gekoDrPath());
+                    driver = new FirefoxDriver();
+                    break;
+                case "CHROME":
+                    System.setProperty("webdriver.chrome.driver", pr.chromeDriverPath());
+                    driver = new ChromeDriver();
+                    break;
+                default:
+                    driver = null;
+                    DotTestListener.log("Type of browser not valid!");
+            }
 
-        driver.manage().timeouts().implicitlyWait(pr.timeWAIT(), TimeUnit.MILLISECONDS);
-        driver.manage().timeouts().pageLoadTimeout(pr.timeOut(), TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(pr.timeWAIT(), TimeUnit.MILLISECONDS);
+            driver.manage().timeouts().pageLoadTimeout(pr.timeOut(), TimeUnit.SECONDS);
 //        driver.manage().window().setSize(new Dimension(1024, 900));
 //        driver.manage().window().setPosition(new Point(60, 1));
-        driver.manage().deleteAllCookies();
-    }
-
-    public void quiteDriver() {
-        if (driver != null) {
-            driver.close();
-            driver.quit();
+            driver.manage().deleteAllCookies();
         }
     }
 }

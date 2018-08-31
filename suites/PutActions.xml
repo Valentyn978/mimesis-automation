@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Check users data. Put Actions.">
     <test name="Test. Check users data. Put Actions.">
-        <parameter name="browserType" value="CHROME" />
         <parameter name="dataSet" value="firstDataSet" />
         <classes>
             <class name="com.tests.TestPutActions"/>
