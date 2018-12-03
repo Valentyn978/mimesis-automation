@@ -9,6 +9,9 @@ import java.util.stream.IntStream;
 
 public class TestUsingFunctionInterface {
 
+    @Nullable
+    public Supplier<Double> doubleSupplier = () -> (double) (51 << 2);
+
     enum TypesOfConnect {
         WI_FI, HUB, ZIK_BE
     }
@@ -41,19 +44,19 @@ public class TestUsingFunctionInterface {
 
         @Override
         public String toString() {
-            return String.format("N: %s%n T: %s%n P: %s%n LP: %s%n%n", name, type, priority, placesList.toString());
+            return String.format("%nN: %s%n T: %s%n P: %s%n LP: %s", name, type, priority, placesList.toString());
         }
     }
 
     @Test
     public void testRegularExpressions() {
-        System.out.printf("Matcher: %s%n", Pattern.compile("(?<=href=)(\"([^\"]*\")|'[^']*'|([^'\">\\s]+))")
+        System.out.format("Matcher: %s%n", Pattern.compile("(?<=href=)(\"([^\"]*\")|'[^']*'|([^'\">\\s]+))")
                 .matcher("<a href=\"http://www.mkyong.com/regular-expressions/how-to-validate-html-tag-with-regular-expression/\" " +
                         "target=\"_blank\">See the explanation and example here</a>")
-                .replaceAll("MY_LINK"));
+                .replaceFirst("\"https://it_is.MY_LINK.com/test/\""));
 
 
-        System.out.printf("Matcher: %s%n", Pattern.compile("/?\\W{3}|\\d{2}|;")
+        System.out.format("Matcher: %s%n", Pattern.compile("/?\\W{3}|\\d{2}|;")
                 .matcher("a;lsdf87u23ijrl---a;lsdfu98").replaceAll("_"));
     }
 
@@ -98,7 +101,7 @@ public class TestUsingFunctionInterface {
         Map<TypesOfConnect, List<SmartHomeItems>> sByPriority = homeItems
                 .stream()
                 .collect(Collectors.groupingBy(i -> i.type));
-        sByPriority.forEach((a, b) -> System.out.format("#%s info: %s\n", a, b));
+        sByPriority.forEach((a, b) -> System.out.format("#%s info: %s%n", a, b));
         int priority = 0;
         String fResult = homeItems
                 .stream()
@@ -107,7 +110,7 @@ public class TestUsingFunctionInterface {
                 .collect(Collectors.joining(" and ",
                         "In home present ",
                         " with priority more then #" + priority));
-        System.out.println("\n-----------\n" + fResult);
+        System.out.format("%n-----------%n%s", fResult);
         System.out.println("\n---------------------------\n");
 
         homeItems.stream().flatMap(p -> p.placesList.stream()).forEach(i -> System.out.println(i.nameOfPlace));
@@ -122,12 +125,16 @@ public class TestUsingFunctionInterface {
         System.out.println("Result Map: " + hMap);
 
 
-        Supplier<Double> doubleSupplier = () -> (double) (51 << 2);
         System.out.println("Supplier: " + squareLazy(doubleSupplier));
         System.out.println("Supplier with null value: " + squareLazy(null));
+        System.out.println("Supplier with default value: " + squareLazy());
     }
 
     private Double squareLazy(@Nullable Supplier<Double> lazyValue) {
         return Math.toRadians((Optional.ofNullable(lazyValue).orElse(() -> (double) 1000)).get());
+    }
+
+    private Double squareLazy() {
+        return Math.toRadians((Optional.ofNullable(doubleSupplier).orElse(() -> (double) 1000)).get());
     }
 }
