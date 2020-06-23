@@ -35,7 +35,7 @@ public class WelcomePage implements OpenedInterface {
 
     public String getTextFromResultArea() {
         pageDriver.clickObjectByXPath(RESULT_AREA, "Click by result area");
-        pageDriver.explicitWait(RESULT_AREA, 1000, "Waiting result is present");
+        pageDriver.explicitWait(RESULT_AREA, 100, "Waiting result is present");
         String textFromObject = pageDriver.getTextFromObject(RESULT_AREA);
         pageDriver.takeScreenShot();
         return textFromObject;
