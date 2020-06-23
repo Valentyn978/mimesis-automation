@@ -1,6 +1,5 @@
 package com.helpers;
 
-import com.configuration.reporting.TestLogger;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -11,7 +10,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.codehaus.jettison.json.JSONException;
 import org.testng.TestNGException;
 
@@ -29,7 +29,7 @@ public class RestSender {
     static String headerData = "text/html";
 
     private static CloseableHttpClient closeableClient;
-    private static final Logger LOGGER = TestLogger.getLogger(RestSender.class);
+    private static final Logger LOGGER = LogManager.getLogger(RestSender.class);
     private String url;
     private String fullUrl;
     private String jSon = "";

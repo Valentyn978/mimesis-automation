@@ -1,9 +1,9 @@
 package com.tests;
 
-import com.configuration.reporting.TestLogger;
 import com.data.DataSets;
 import com.google.inject.Inject;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -11,7 +11,7 @@ import static org.testng.Assert.assertEquals;
 
 public class TestPostActions extends AbstractTest {
 
-    private static final Logger LOGGER = TestLogger.getLogger(TestPostActions.class);
+    private static final Logger LOGGER = LogManager.getLogger(TestPostActions.class);
 
     @Inject
     private DataSets sets;

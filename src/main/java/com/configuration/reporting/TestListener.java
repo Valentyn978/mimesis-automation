@@ -1,6 +1,7 @@
 package com.configuration.reporting;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -10,7 +11,7 @@ import org.testng.ITestResult;
 public class TestListener implements ITestListener {
 
     public static final String CURRENT_TEST_REPORT_DIR = "currentTestReportDir";
-    private final Logger logger = TestLogger.getLogger(TestListener.class);
+    private final Logger logger = LogManager.getLogger(TestListener.class);
 
     @Override
     public void onTestStart(ITestResult iTestResult) {

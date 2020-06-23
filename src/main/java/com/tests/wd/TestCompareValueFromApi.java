@@ -1,10 +1,10 @@
 package com.tests.wd;
 
 
-import com.configuration.reporting.TestLogger;
 import com.data.RestClients;
 import com.google.inject.Inject;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,7 +12,7 @@ import static com.tests.wd.TestNationalWeather.tempFromUI;
 
 public class TestCompareValueFromApi extends FunctionalTest {
 
-    private static final Logger LOGGER = TestLogger.getLogger(TestCompareValueFromApi.class);
+    private static final Logger LOGGER = LogManager.getLogger(TestCompareValueFromApi.class);
     private String result = null;
 
     @Inject

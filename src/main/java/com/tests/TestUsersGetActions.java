@@ -1,9 +1,9 @@
 package com.tests;
 
-import com.configuration.reporting.TestLogger;
 import com.google.inject.Inject;
 import com.pages.JsonPlaceholder;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.codehaus.jettison.json.JSONArray;
 import org.testng.annotations.*;
 
@@ -13,7 +13,7 @@ import static org.testng.Assert.assertTrue;
 
 public class TestUsersGetActions extends AbstractTest {
 
-    private static final Logger LOGGER = TestLogger.getLogger(TestUsersGetActions.class);
+    private static final Logger LOGGER = LogManager.getLogger(TestUsersGetActions.class);
 
     private String userName;
     private String userId;
