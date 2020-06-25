@@ -51,6 +51,6 @@ public class DataSetFirst implements DataSets
 
     @Override
     public String getResultDataTranslator() {
-        return "Source text";
+        return "Text source";
     }
 }
