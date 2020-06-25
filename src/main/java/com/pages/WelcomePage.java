@@ -8,7 +8,7 @@ import com.google.inject.Inject;
 
 public class WelcomePage implements OpenedInterface {
 
-    public static final String RESULT_AREA = "//*[@id='gt-res-dir-ctr']";
+    public static final String RESULT_AREA = "//span[@title]";
     public static final String PAGE_FLAG = "//div/a[.='Translate']";
     public static final String SOURCE_AREA = "//*[@id='source']";
 
@@ -25,7 +25,7 @@ public class WelcomePage implements OpenedInterface {
     @Override
     public boolean isOpen() {
         pageDriver.takeScreenShot();
-        return pageDriver.isPresentByXpath(PAGE_FLAG);
+        return pageDriver.isPlacedByXpath(PAGE_FLAG);
     }
 
     public void putTextToSourceArea(String sourceText) {
