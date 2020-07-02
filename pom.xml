@@ -6,7 +6,7 @@
 
 	<groupId>mimesis</groupId>
 	<artifactId>mimesis</artifactId>
-	<version>0.0.3-mimesis</version>
+	<version>0.0.4-mimesis</version>
 
 	<name>mimesis-automation</name>
 	<description>AutomationFramework</description>
@@ -16,9 +16,15 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<start-class>com.TestingApplication</start-class>
-		<selenium.version>3.7.1</selenium.version>
+		<selenium.version>3.141.59</selenium.version>
 		<aspectj.version>1.8.9</aspectj.version>
 		<allure.version>1.5.4</allure.version>
+		<serenity.version>2.2.8</serenity.version>
+		<serenity.maven.version>2.2.8</serenity.maven.version>
+		<serenity.cucumber.version>2.2.5</serenity.cucumber.version>
+		<parallel.tests>3</parallel.tests>
+		<tags></tags>
+		<webdriver.base.url></webdriver.base.url>
 	</properties>
 
 	<dependencies>
@@ -54,12 +60,14 @@
 			<version>4.5.2</version>
 		</dependency>
 
-		<!-- REST Assured -->
+		<!-- ASSERTIONS -->
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
 			<version>1.3</version>
 		</dependency>
+
+		<!-- REST Assured -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -168,6 +176,44 @@
 			<version>2.2</version>
 		</dependency>
 
+		<!-- SCREENPLAY -->
+		<dependency>
+			<groupId>net.serenity-bdd</groupId>
+			<artifactId>serenity-core</artifactId>
+			<version>${serenity.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.serenity-bdd</groupId>
+			<artifactId>serenity-junit</artifactId>
+			<version>${serenity.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.serenity-bdd</groupId>
+			<artifactId>serenity-screenplay</artifactId>
+			<version>${serenity.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.serenity-bdd</groupId>
+			<artifactId>serenity-screenplay-webdriver</artifactId>
+			<version>${serenity.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.serenity-bdd</groupId>
+			<artifactId>serenity-ensure</artifactId>
+			<version>${serenity.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.serenity-bdd</groupId>
+			<artifactId>serenity-cucumber5</artifactId>
+			<version>${serenity.cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.aeonbits.owner/owner -->
 		<dependency>
 			<groupId>org.aeonbits.owner</groupId>
@@ -264,6 +310,59 @@
 				<version>2.0</version>
 				<!--versions:display-dependency-updates-->
 			</plugin>
+
+			<!-- Serenity and Cucumber -->
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>3.0.0-M5</version>
+				<configuration>
+					<includes>
+						<include>**/*Test.java</include>
+						<include>**/Test*.java</include>
+						<include>**/*TestSuite.java</include>
+						<include>**/When*.java</include>
+					</includes>
+					<systemPropertyVariables>
+						<webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
+					</systemPropertyVariables>
+					<parallel>classes</parallel>
+					<threadCount>${parallel.tests}</threadCount>
+					<forkCount>${parallel.tests}</forkCount>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+            <plugin>
+                <groupId>net.serenity-bdd.maven.plugins</groupId>
+                <artifactId>serenity-maven-plugin</artifactId>
+                <version>${serenity.maven.version}</version>
+                <configuration>
+                    <tags>${tags}</tags>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.serenity-bdd</groupId>
+                        <artifactId>serenity-core</artifactId>
+                        <version>${serenity.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>serenity-reports</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
 		</plugins>
 	</build>
 </project>

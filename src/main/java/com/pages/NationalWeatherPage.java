@@ -9,7 +9,7 @@ import com.google.inject.Inject;
 public class NationalWeatherPage implements OpenedInterface {
 
     public static final String PAGE_FLAG = "//span[.='Today']";
-    public static final String TEMP_LABEL = "//div[@class='today_nowcard-temp']/span";
+    public static final String TEMP_LABEL = "//section/div/div/span[@data-testid='TemperatureValue']";
 
     @Inject
     private MimesisConfig config;
@@ -24,7 +24,7 @@ public class NationalWeatherPage implements OpenedInterface {
     @Override
     public boolean isOpen() {
         pageDriver.takeScreenShot();
-        return pageDriver.isPresentByXpath(PAGE_FLAG);
+        return pageDriver.isPlacedByXpath(PAGE_FLAG);
     }
 
     public String getTempToDay() {
