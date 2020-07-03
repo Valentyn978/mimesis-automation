@@ -10,8 +10,8 @@ Frameworks facilitating the hard life of an Q&amp;A engineers
 
 <H3>Release 0.0.4</H3>
 <ol type=1>Added:
-<li>Add integration with **SreenPlay** pattern</li>
-<li>Add integration with **Cucumber** and **Serenity**</li>
+<li>Add integration with <b>SreenPlay</b> pattern</li>
+<li>Add integration with <b>Cucumber</b> and <b>Serenity</b></li>
 <li>Add integration with Feature files</li>
 </ol>
 
