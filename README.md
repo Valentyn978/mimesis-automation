@@ -23,7 +23,7 @@ Frameworks facilitating the hard life of an Q&amp;A engineers
 ### Preparation for start WD TESTS
 * Rename base.properties.example to base.properties in the root directory and put valid data (for example 'API_ID' should contains valid ID from https://openweathermap.org site)
 * Run build Maven project (mv clean install)
-* For run new scope 'ScreenPlay' use 'src/test/resources/features/FrontAndBackAnd.feature'
+* For run new scope <b>'ScreenPlay'</b> use <i>'src/test/java/screenplay/CucumberTestSuite.java'</i>
 * Run modify is needed Suit xml file in the ${basedir}/target/run/WDSuiteTest.xml (in this case you have ability to modify type of Browser and Http client
 
 * Run project using the next command from the ${basedir}/target/run folder
