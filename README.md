@@ -12,7 +12,7 @@ Frameworks facilitating the hard life of an Q&amp;A engineers
 <ol type=1>Added:
 <li>Add integration with <b>SreenPlay</b> pattern</li>
 <li>Add integration with <b>Cucumber</b> and <b>Serenity</b></li>
-<li>Add integration with Feature files</li>
+<li>Add integration with <b>Feature files</b> <i>(User stories)</i></li>
 </ol>
 
 <H3>What's planned:</H3>
@@ -35,5 +35,4 @@ Frameworks facilitating the hard life of an Q&amp;A engineers
 
 #### What's planned:
 * Add sonarqube
-* Add User stories
-* Add integration with cucumber
+* Add <b>Appium</b> FW for React Native
