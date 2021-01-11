@@ -41,6 +41,6 @@ public class AutomationMainModule extends AbstractModule {
         } else {
             bind(DataSets.class).toInstance(new DataSetFirst());
         }
-        bind(PageDriver.class).toInstance(new PageDriverImpl(new WebDriverSetUp().getDriver(testContext)));
+//        bind(PageDriver.class).toInstance(new PageDriverImpl(new WebDriverSetUp().getDriver(testContext)));
     }
 }

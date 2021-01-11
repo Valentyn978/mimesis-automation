@@ -19,7 +19,11 @@ public class JdbcDriverSetUp {
         LOGGER.info("-------- MySQL JDBC Connection Testing ------------");
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            try {
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+            } catch (InstantiationException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
         } catch (ClassNotFoundException e) {
             LOGGER.info("Where is your MySQL JDBC Driver?");
             e.printStackTrace();
@@ -29,9 +33,7 @@ public class JdbcDriverSetUp {
         LOGGER.info("MySQL JDBC Driver Registered!");
 
         try {
-            connection = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/mimesis", "root", "root");
-
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/new_test", "root", "root1");
         } catch (SQLException e) {
             LOGGER.info("Connection Failed! Check output console");
             e.printStackTrace();

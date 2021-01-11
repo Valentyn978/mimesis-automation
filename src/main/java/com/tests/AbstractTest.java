@@ -45,11 +45,11 @@ public class AbstractTest {
         injector.injectMembers(this);
     }
 
-    @AfterTest
-    public void tearDownAfterTest() {
-        if (null != injector)
-            injector.getInstance(PageDriver.class).quit();
-    }
+//    @AfterTest
+//    public void tearDownAfterTest() {
+//        if (null != injector)
+//            injector.getInstance(PageDriver.class).quit();
+//    }
 
     public String getJsonPathValue(String responseContent, String jsonPath) {
         String actualValue = null;
