@@ -8,9 +8,9 @@ import com.google.inject.Inject;
 
 public class WelcomePage implements OpenedInterface {
 
-    public static final String RESULT_AREA = "//span[@title]";
+    public static final String RESULT_AREA = "//c-wiz/h2[@id]/..//div//span[@jsaction]";
     public static final String PAGE_FLAG = "//div/a[.='Translate']";
-    public static final String SOURCE_AREA = "//*[@id='source']";
+    public static final String SOURCE_AREA = "//textarea[@aria-label]";
 
     @Inject
     private MimesisConfig propertiesLoader;

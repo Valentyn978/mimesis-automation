@@ -6,7 +6,7 @@
 
 	<groupId>mimesis</groupId>
 	<artifactId>mimesis</artifactId>
-	<version>0.0.4-mimesis</version>
+	<version>1.0.4-mimesis</version>
 
 	<name>mimesis-automation</name>
 	<description>AutomationFramework</description>
@@ -19,9 +19,9 @@
 		<selenium.version>3.141.59</selenium.version>
 		<aspectj.version>1.8.9</aspectj.version>
 		<allure.version>1.5.4</allure.version>
-		<serenity.version>2.2.8</serenity.version>
+		<serenity.version>3.9.7</serenity.version>
 		<serenity.maven.version>2.2.8</serenity.maven.version>
-		<serenity.cucumber.version>2.2.5</serenity.cucumber.version>
+		<serenity.cucumber.version>2.2.6</serenity.cucumber.version>
 		<parallel.tests>3</parallel.tests>
 		<tags></tags>
 		<webdriver.base.url></webdriver.base.url>
@@ -50,14 +50,14 @@
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
-			<version>4.0</version>
+			<version>5.1.0</version>
 		</dependency>
 
 		<!-- http client -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.5.2</version>
+			<version>4.5.14</version>
 		</dependency>
 
 		<!-- ASSERTIONS -->
@@ -71,7 +71,7 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.6.2</version>
+			<version>2.10.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.jayway.restassured</groupId>
@@ -83,12 +83,12 @@
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-json</artifactId>
-			<version>1.8</version>
+			<version>1.19.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
-			<version>1.8.3</version>
+			<version>1.10.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.skyscreamer</groupId>
@@ -98,7 +98,7 @@
 		<dependency>
 			<groupId>com.jayway.jsonpath</groupId>
 			<artifactId>json-path</artifactId>
-			<version>2.2.0</version>
+			<version>2.8.0</version>
 		</dependency>
 
 		<!-- Test -->
@@ -126,13 +126,13 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.21</version>
+			<version>2.0.7</version>
 		</dependency>
 
 		<!-- COMMONS -->
@@ -144,7 +144,7 @@
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
+			<version>2.12.0</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
@@ -161,12 +161,12 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
-			<version>2.1</version>
+			<version>2.20.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.13.2</version>
+			<version>2.20.0</version>
 		</dependency>
 
 		<!-- TIME -->
@@ -218,7 +218,7 @@
 		<dependency>
 			<groupId>org.aeonbits.owner</groupId>
 			<artifactId>owner-java8</artifactId>
-			<version>1.0.6</version>
+			<version>1.0.12</version>
 		</dependency>
 	</dependencies>
 
@@ -229,8 +229,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>

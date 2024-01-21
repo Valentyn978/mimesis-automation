@@ -15,6 +15,6 @@ public class GetDataFromUi {
 	}
 
 	public static Question<String> tempOfLondonCity() {
-		return actor -> Text.of(WeatherOfLondonForm.TEMP_OF_LONDON_LOCATOR).viewedBy(actor).asString();
+		return actor -> Text.of(WeatherOfLondonForm.TEMP_OF_LONDON_LOCATOR).answeredBy(actor);
 	}
 }
