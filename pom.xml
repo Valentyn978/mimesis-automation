@@ -46,6 +46,13 @@
 			<version>${selenium.version}</version>
 		</dependency>
 
+		<!-- playwright -->
+		<dependency>
+			<groupId>com.microsoft.playwright</groupId>
+			<artifactId>playwright</artifactId>
+			<version>1.41.0</version>
+		</dependency>
+
 		<!-- google -->
 		<dependency>
 			<groupId>com.google.inject</groupId>
@@ -341,7 +348,8 @@
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
-                <version>${serenity.maven.version}</version>
+                <version>3.9.2</version>
+<!--                <version>${serenity.maven.version}</version>-->
                 <configuration>
                     <tags>${tags}</tags>
                 </configuration>
